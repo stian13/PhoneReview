@@ -25,7 +25,7 @@
             --grosorFuente2: 400;
             --grosorFuente3: 500;
         }
-        /*cabecera*/
+        /*cabecera-desktop*/
         header{
             display: flex;
             justify-content: center;
@@ -41,9 +41,6 @@
         .cabecera .section-cabecera .title-principal{
             font-size: var(--zisetitulos);
         }
-        .cabecera .section-pagina .lista-secciones {
-            /*display: flex;*/
-        }
         .cabecera .section-cabecera .title-principal span {
             /*display: flex;*/
             color: var(--colorprincipal);
@@ -57,12 +54,43 @@
         .cabecera .section-cabecera, .section-pagina{
             margin: 10px;
         }
-        @media (max-width:696px) {
+        /*cabecera-Movile*/
+        .section-cabecera div:nth-child(2){
+            display: none;
+        }
+        
+        .section-cabecera div:nth-child(2) img{
+            width: 35px;
+        }
+        /*.list-movile{
+            display: none;
+        }*/
+        
+        .section-cabecera {
+                display: flex;
+                justify-content: space-between;
+        }
+         .list-izd-movile {
+                margin-top: 20px;
+                margin-left: 15px;
+                list-style: none;
+                font-size: var(--zisetitulos);
+        }
+        .hinabilitar{
+            display: none;
+        }
+        @media (max-width:700px) {
             .cabecera {
                border: none;
             }
             .cabecera .section-pagina{
                 display: none;
+            }
+            .section-cabecera div:nth-child(2){
+                display: inline-block;
+            }
+            .section-cabecera{
+                width: 100%;
             }
         }
     </style>
@@ -73,15 +101,37 @@
         <div class="cabecera">
             <section class="section-cabecera">
                 <div class="title-principal"><span>Phone</span>Review</div>
+                <div>
+                    <img src="https://cdn1.iconfinder.com/data/icons/essentials-pack/96/menu_more_detail_list_interface-256.png" alt="">
+                </div>
             </section>
-            <section class="section-pagina">
+            <section class="section-pagina de">
                 <ul class="lista-secciones">
-                    <li>Principal</li>
-                    <li>Categorias</li>
-                    <li>Nuevos Equipos</li>
+                    <li>
+                        Principal
+                    </li>
+                    <li>
+                        Categorias
+                    </li>
+                    <li>
+                        Nuevos Equipos
+                    </li>
                 </ul>
             </section>
         </div>
     </header>
+    <section class="section-pagina list-movile hinabilitar">
+        <ul class="lista-secciones">
+            <li class="list-izd-movile">
+                Principal
+            </li>
+            <li class="list-izd-movile">
+                Categorias
+            </li>
+            <li class="list-izd-movile">
+                Nuevos Equipos
+            </li>
+        </ul>
+    </section>
 </body>
 </html>
