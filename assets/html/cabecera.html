@@ -76,6 +76,45 @@
                 list-style: none;
                 font-size: var(--zisetitulos);
         }
+        
+        /*----------------------estilos menu principal desktop--------------------*/
+        .conteiner-cards-phone{
+            display: grid;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            
+        }
+        .conteiner-cards-phone .cards-phone{
+             width: 300px;
+        }
+        .conteiner-cards-phone .cards-phone .img-phone{
+            width: 300px;
+            background-size: contain;
+        }
+        .conteiner-cards-phone .cards-phone div{
+            text-align: center;
+            font-size: var(--zisetexto);
+            font-weight: var(--grosorFuente1);
+        }
+        .datos-phone{
+            width: 300px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 5px;
+
+        }
+        .datos-phone div{
+            display: flex;
+        }
+        
+        .datos-phone div .img-microdata{
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
         .hinabilitar{
             display: none;
         }
@@ -91,6 +130,17 @@
             }
             .section-cabecera{
                 width: 100%;
+            }
+        }
+        @media(max-width:616px){
+            .conteiner-cards-phone .cards-phone{
+                width: 250px;
+            }
+            .conteiner-cards-phone .cards-phone .img-phone{
+                width: 250px;
+            }
+            .datos-phone{
+                width: 250px;
             }
         }
     </style>
@@ -133,5 +183,99 @@
             </li>
         </ul>
     </section>
+<!--Pestaña principal-->
+<main>
+    <div class="conteiner-cards-phone">
+        <div class="cards-phone">
+            <img src="https://cdn-files.kimovil.com/default/0005/89/thumb_488011_default_big.jpeg" alt="" class="img-phone">
+            <div>Xiaomi Redmi 9A</div>
+            <div class="datos-phone hinabilitar">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3151/3151254.png" alt="" class="img-microdata">
+                    <div class="text-microdato">120gb</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="" class="img-microdata">
+                    <div class="text-microdato">13 mpx</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/543/543320.png" alt="" class="img-microdata">
+                    <div class="text-microdato">8 GB RAM</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/978/978022.png" alt="" class="img-microdata">
+                    <div class="text-microdato">5000 mAh</div>
+                </div>
+            </div>
+        </div>
+        <div class="cards-phone">
+            <img src="https://cdn-files.kimovil.com/default/0005/89/thumb_488011_default_big.jpeg" alt="" class="img-phone">
+            <div>Xiaomi Redmi 9A</div>
+            <div class="datos-phone hinabilitar">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3151/3151254.png" alt="" class="img-microdata">
+                    <div class="text-microdato">120gb</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="" class="img-microdata">
+                    <div class="text-microdato">13 mpx</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/543/543320.png" alt="" class="img-microdata">
+                    <div class="text-microdato">8 GB RAM</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/978/978022.png" alt="" class="img-microdata">
+                    <div class="text-microdato">5000 mAh</div>
+                </div>
+            </div>
+        </div>
+        <div class="cards-phone">
+            <img src="https://cdn-files.kimovil.com/default/0005/89/thumb_488011_default_big.jpeg" alt="" class="img-phone">
+            <div>Xiaomi Redmi 9A</div>
+            <div class="datos-phone hinabilitar">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3151/3151254.png" alt="" class="img-microdata">
+                    <div class="text-microdato">120gb</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="" class="img-microdata">
+                    <div class="text-microdato">13 mpx</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/543/543320.png" alt="" class="img-microdata">
+                    <div class="text-microdato">8 GB RAM</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/978/978022.png" alt="" class="img-microdata">
+                    <div class="text-microdato">5000 mAh</div>
+                </div>
+            </div>
+        </div>
+        <div class="cards-phone">
+            <img src="https://cdn-files.kimovil.com/default/0005/89/thumb_488011_default_big.jpeg" alt="" class="img-phone">
+            <div>Xiaomi Redmi 9A</div>
+            <div class="datos-phone hinabilitar">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3151/3151254.png" alt="" class="img-microdata">
+                    <div class="text-microdato">120gb</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="" class="img-microdata">
+                    <div class="text-microdato">13 mpx</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/543/543320.png" alt="" class="img-microdata">
+                    <div class="text-microdato">8 GB RAM</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/978/978022.png" alt="" class="img-microdata">
+                    <div class="text-microdato">5000 mAh</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!---->
 </body>
 </html>
