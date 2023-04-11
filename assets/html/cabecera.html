@@ -29,6 +29,7 @@
         header{
             display: flex;
             justify-content: center;
+            
         }
         .cabecera{
             display: flex;
@@ -37,6 +38,9 @@
             border: 2px solid black;
             border-radius: 10px;
             margin-top: 20px;
+            position: fixed;
+            background-color: aliceblue;
+            z-index: 10;
         }
         .cabecera .section-cabecera .title-principal{
             font-size: var(--zisetitulos);
@@ -83,10 +87,10 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 10px;
-            
+            margin-top: 60px;
+           
         }
+        
         .conteiner-cards-phone .cards-phone{
              width: 300px;
         }
@@ -117,6 +121,99 @@
         }
         .hinabilitar{
             display: none;
+        }
+        /*-------------seccion-Categorias------------*/
+        .title{
+            font-size: var(--zisetitulos);
+            margin: 30px;
+        }
+        .title img:nth-child(1){ 
+            width: 50px;
+        }
+        .title img:nth-child(2){ 
+            width: 40px;
+        }
+        .title img:nth-child(3){ 
+            width: 30px;
+        }
+        .box-categorias{
+            display: flex;
+            justify-content: center;
+        }
+        .conteiner-categorias{
+            width: 95%;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 5px;
+        }
+        .categoria{
+            height: 300px;
+        }
+        .categoria:hover{
+            cursor: pointer;
+        }
+        .img-categoria{
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+        }
+        .camaras{
+            grid-column-start: 1;
+            grid-column-end:3;
+        }
+        .almacenamiento{
+            grid-column-start: 3;
+            grid-column-end: 5;
+        }
+        .multimedia{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+        .gamer{
+            grid-column-start: 3;
+            grid-column-end: 6;
+        }
+        .gama-media{
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+        .gama-alta{
+            grid-column-start: 4;
+            grid-column-end: 6;
+        }
+        .text-categoria{
+            position: relative;
+            bottom:30%;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: var(--zisetitulos);
+            background-color: var(--colorprincipal);
+        }
+        /*-------------Footer-----------*/
+        footer{
+            margin-top: 100px;
+        }
+        .conteiner-footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(241, 241, 241);
+        }
+        .content-footer div{
+            text-align: center;
+            color:rgb(216, 216, 216);
+        }
+        .content-footer div:nth-child(1){
+            margin: 15px;
+        }
+        .nuevos {
+            margin-right: 20px;
+            margin-top:  50px;
+        }
+        .new{
+            margin-top: 0px;
         }
         @media (max-width:700px) {
             .cabecera {
@@ -183,7 +280,64 @@
             </li>
         </ul>
     </section>
+<!--detail-mostrar celulares-->
+<section>
+    <div class="detail-telefono">
+        <div class="info-telefono">
+            <img src="exid" alt="">
+            <img src="" alt="">
+        </div>
+        <div>Nombre Dispositivo</div>
+        <div>Estrellas</div>
+        <div class="especificaciones">
+            <div>Caracteristicas</div>
+        <div>
+            <div>
+                <img src="" alt="">
+                <div>almacenamiento</div>
+                <div></div>
+            </div>
+            <div>
+                <img src="" alt="">
+                <div>Camara</div>
+                <div></div>
+            </div>
+            <div>
+                <img src="" alt="">
+                <div>RAM</div>
+                <div></div>
+            </div>
+            <div>
+                <img src="" alt="">
+                <div>CPU</div>
+                <div></div>
+            </div>
+            <div>
+                <img src="" alt="">
+                <div>Sisteme Operativo</div>
+                <div></div>
+            </div>
+            <div>
+                <img src="" alt="">
+                <div>Bateria</div>
+                <div></div>
+            </div>
+        </div>
+        </div>
+        <div class="comentarios">
+            <div class="comentar">
+                <div>nombre</div>
+                <input type="text">
+            </div>
+            <div class="otros-comentarios">
+                <div>nombre</div>
+                <div>comentario</div>
+            </div>
+        </div>
+    </div>
+</section>
 <!--Pestaña principal-->
+
 <main>
     <div class="conteiner-cards-phone">
         <div class="cards-phone">
@@ -276,6 +430,154 @@
         </div>
     </div>
 </main>
-<!---->
+<!------------Seccion de categorias xd---------->
+<div  class="title" >
+    Categorias  <img src="https://cdn-icons-png.flaticon.com/512/9037/9037469.png" alt=""><img src="https://cdn-icons-png.flaticon.com/512/0/191.png" alt=""><img src="https://cdn-icons-png.flaticon.com/512/0/488.png" alt=""> 
+</div>
+<section class="box-categorias">
+    
+    <div class="conteiner-categorias">
+        <div class="categoria camaras">
+                <img class="img-categoria" src="https://fscl01.fonpit.de/userfiles/6727621/image/2017/BEST/AndroidPIT-BEST-SMARTPHONES-2017-close-up.jpg">
+                <div class="text-categoria">Telefonos con mejores camaras</div>
+        </div>
+        <div class="categoria almacenamiento">
+                <img class="img-categoria" src="https://images.pexels.com/photos/117729/pexels-photo-117729.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                <div class="text-categoria">Telefonos con alto almacenamiento</div>
+        </div>
+        <div class="categoria resistentes">
+            <img class="img-categoria" src="https://www.mobilegamer.com.br/wp-content/uploads/2017/10/oukitel-k10000-max-600x502.jpg">
+            <div class="text-categoria">Telefonos resistentes</div>
+        </div>
+        <div class="categoria multimedia">
+            <img class="img-categoria" src="https://images.pexels.com/photos/1069798/pexels-photo-1069798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+            <div class="text-categoria">Telefonos Para multimedia</div>
+        </div>
+        <div class="categoria gamer">
+            <img class="img-categoria" src="https://cdn.mos.cms.futurecdn.net/yyPypoHn3HbEPtmCFeaAGT.jpg">
+            <div class="text-categoria">Telefonos gamer</div>
+        </div>
+        <div class="categoria gama-baja">
+            <img class="img-categoria" src="https://www.tecnologiadetuatu.elcorteingles.es/wp-content/uploads/2015/08/smartbaratosfn.jpg">
+                <div class="text-categoria">Telefonos Gama Baja</div>
+        </div>
+        <div class="categoria gama-media">
+            <img class="img-categoria" src="https://www.supratech.es/wp-content/uploads/2020/05/Xiaomi-Mi-9-1-scaled.jpg">
+                <div class="text-categoria">Telefonos Gama Media</div>
+        </div>
+        <div class="categoria gama-alta">
+            <img class="img-categoria" src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                <div class="text-categoria">Telefonos Gama Alta</div>
+        </div>
+        
+       
+    </div>
+</section>
+<!--Dispositivos nuevos-->
+<main>
+    <div class="title nuevos">
+        Nuevos Equipos
+    </div>
+    <div class="conteiner-cards-phone new">
+        <div class="cards-phone ">
+            <img src="https://cdn-files.kimovil.com/default/0005/89/thumb_488011_default_big.jpeg" alt="" class="img-phone">
+            <div>Xiaomi Redmi 9A</div>
+            <div class="datos-phone hinabilitar">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3151/3151254.png" alt="" class="img-microdata">
+                    <div class="text-microdato">120gb</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="" class="img-microdata">
+                    <div class="text-microdato">13 mpx</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/543/543320.png" alt="" class="img-microdata">
+                    <div class="text-microdato">8 GB RAM</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/978/978022.png" alt="" class="img-microdata">
+                    <div class="text-microdato">5000 mAh</div>
+                </div>
+            </div>
+        </div>
+        <div class="cards-phone">
+            <img src="https://cdn-files.kimovil.com/default/0005/89/thumb_488011_default_big.jpeg" alt="" class="img-phone">
+            <div>Xiaomi Redmi 9A</div>
+            <div class="datos-phone hinabilitar">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3151/3151254.png" alt="" class="img-microdata">
+                    <div class="text-microdato">120gb</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="" class="img-microdata">
+                    <div class="text-microdato">13 mpx</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/543/543320.png" alt="" class="img-microdata">
+                    <div class="text-microdato">8 GB RAM</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/978/978022.png" alt="" class="img-microdata">
+                    <div class="text-microdato">5000 mAh</div>
+                </div>
+            </div>
+        </div>
+        <div class="cards-phone">
+            <img src="https://cdn-files.kimovil.com/default/0005/89/thumb_488011_default_big.jpeg" alt="" class="img-phone">
+            <div>Xiaomi Redmi 9A</div>
+            <div class="datos-phone hinabilitar">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3151/3151254.png" alt="" class="img-microdata">
+                    <div class="text-microdato">120gb</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="" class="img-microdata">
+                    <div class="text-microdato">13 mpx</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/543/543320.png" alt="" class="img-microdata">
+                    <div class="text-microdato">8 GB RAM</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/978/978022.png" alt="" class="img-microdata">
+                    <div class="text-microdato">5000 mAh</div>
+                </div>
+            </div>
+        </div>
+        <div class="cards-phone">
+            <img src="https://cdn-files.kimovil.com/default/0005/89/thumb_488011_default_big.jpeg" alt="" class="img-phone">
+            <div>Xiaomi Redmi 9A</div>
+            <div class="datos-phone hinabilitar">
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3151/3151254.png" alt="" class="img-microdata">
+                    <div class="text-microdato">120gb</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="" class="img-microdata">
+                    <div class="text-microdato">13 mpx</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/543/543320.png" alt="" class="img-microdata">
+                    <div class="text-microdato">8 GB RAM</div>
+                </div>
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/978/978022.png" alt="" class="img-microdata">
+                    <div class="text-microdato">5000 mAh</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="conteiner-footer">
+        <div class="content-footer">
+            <div>Sobre Nosotros</div>
+            <div><span>Phone</span>Review</div>
+            <div>2023</div>
+            
+        </div>
+    </div>
+</footer>
 </body>
 </html>
