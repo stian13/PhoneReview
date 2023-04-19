@@ -18,6 +18,8 @@
     --grisnamesmartphone: #818181;
     --azulclarosuabe: #5ECDE0;
     --blanco: white;
+    --lilaclaro: #B4ABEB;
+    --amarilloclaro: #E3E084;
     --sombra: 0, 0, 0, 0.25;
 }
 /*cabecera-desktop*/
@@ -148,6 +150,7 @@ header{
     height: 360px;
     cursor: pointer;
     position: relative;
+    border-radius: 20px;
 }
 .conteiner-cards-smartphone .cards .img-smartphone{
     width: 260px;
@@ -172,34 +175,35 @@ header{
     box-shadow: 4px 4px 4px rgba(0, 0.25, 0, 0.25);
     border-radius: 20px;
 }
+.conteiner-cards-smartphone .cards:active{
+    box-shadow: inset 10px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.conteiner-cards-smartphone .name-smartphone:hover{
+    color: #000000;
+}
 
-.conteiner-cards-smartphone .cards .name-smartphone:hover{
-    color: black;
-}
 /*-------------Footer-----------*/
-footer{
-    margin-top: 100px;
-}
+
 .conteiner-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(241, 241, 241);
+    width: 100%;
+    height: 190px;
+    background: var(--grissuave);
+    
 }
+.content-footer{
+    padding-top: 50px;
+}
+
 .content-footer div{
     text-align: center;
-    color:rgb(216, 216, 216);
+    color: var(--grisnamesmartphone);
+    font-size: var(--zisetitulospequeños);
 }
 .content-footer div:nth-child(1){
-    margin: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
-.nuevos {
-    margin-right: 20px;
-    margin-top:  50px;
-}
-.new{
-    margin-top: 0px;
-}
+
 
 /*--------------------------------------------*/
 .Smart-zone{
@@ -207,6 +211,12 @@ footer{
 }
 .separador{
     margin: 80px 0px 80px 0px;
+}
+.color-fondo{
+    background-color: #E3E084;
+}
+.amarillo-claro{
+    color: var(--amarilloclaro);
 }
 @media (max-width:700px) {
     .cabecera {
