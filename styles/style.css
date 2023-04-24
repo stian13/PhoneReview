@@ -20,6 +20,7 @@
     --blanco: white;
     --lilaclaro: #B4ABEB;
     --amarilloclaro: #E3E084;
+    --verdeclaroblanco:  #5EE0B1;
     --sombra: 0, 0, 0, 0.25;
 }
 /*cabecera-desktop*/
@@ -69,6 +70,173 @@ header{
     background-color: var(--grissuave);
     border-radius: 5px;
 }
+
+/*----Detail-smatphone----*/
+
+.total-detail{
+    position:absolute;
+    z-index: 9;
+    right: 0;
+    padding-top: 60px;
+    height: 700px;
+    overflow: scroll;
+}
+
+.detail-smartphone{
+    width: 600px;
+    background-color: var(--grissuave);
+}
+
+.detail-smartphone .box-smartphone {
+    display: flex;
+}
+.detail-smartphone .box-smartphone .exit{
+    width: 50px;
+    height: 50px;
+}
+.detail-smartphone .box-smartphone .photo-smarphone{
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+.detail-smartphone .name-smartphone-detail{
+    width: 100%;
+    font-size: var(--zisetitulospequeños);
+    margin: 20px 0 20px 0;
+    text-align: center;
+}
+.total-puntos-user{
+    display: flex;
+    justify-content: space-around;
+    font-size: var(--zisetitulospequeños);
+}
+.total-puntos-user .puntos div{
+    display: inline-block;
+}
+.detail-smartphone .conteiner-caracteristicas{
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(2, 180px);
+    justify-content: center;
+    grid-gap: 20px 20px;
+}
+
+    /*conteiner-caracteristicas*/
+.detail-smartphone .conteiner-caracteristicas .caracteristica{
+    width: 100px;
+    height: 180px;
+    background: var(--verdeclaroblanco);
+    border-radius: 20px;
+    display: grid;
+    grid-template-rows: 82px 90px;
+    grid-gap: 15px 0;
+    justify-items: center;
+    margin-top: 10px;
+    
+}
+.detail-smartphone .conteiner-caracteristicas .caracteristica .tipo-carateristica{
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.detail-smartphone .conteiner-caracteristicas .caracteristica img{
+    margin-top: 5px;
+    width: 60px;
+    height: 60px;
+}
+.detail-smartphone .conteiner-caracteristicas .caracteristica span{
+    color: var(--blanco);
+}
+.detail-smartphone .conteiner-caracteristicas .caracteristica .dato-caracteristica{
+    text-align: center;
+}
+
+   /*comentarios*/
+   .comentario-user{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.name-user{
+    order: 1;
+}
+.conteiner-input{
+    order: 2;
+}
+.boton-enviar{
+    order: 3;
+}
+.label-puntos{
+    order: 4;
+    color: var(--grisnamesmartphone);
+}
+.dar-puntuacion{
+    order: 5;
+    border: none;
+    border-radius: 50%;
+    background-color:var(--amarilloclaro);
+    cursor: pointer;
+}
+
+.comentario-user .conteiner-input .input-comentario{
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: solid 1px var(--grisnamesmartphone) ;
+    width: 400px;
+    height: 30px;
+}
+.comentario-user .boton-enviar{
+    border: none;
+    background-color: var(--verdeclaroblanco);
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+            /*otros-comentarios*/
+.todos-comentarios{
+    
+}
+.comentario-user-other {
+    display: grid;
+    grid-template-columns: 90px 400px 60px;
+    justify-content: center;
+    margin-top: 25px;
+}
+.comentario-user-other .parrafo{
+    text-align: justify;
+}
+.caja-puntos{
+    margin-left: 10px;
+}
+.caja-puntos div{
+    display: inline-block;
+}
+
+        /*link tienda*/
+.tienda{
+    margin-top: 50px;
+    width: 600px;
+    height: 50px;
+    background-color: var(--azulclarosuabe);
+    display: flex;
+    justify-content: center;
+}
+.tienda div{
+    margin-top: 15px;
+}
+.tienda div a{
+    text-decoration: none;
+    font-size: var(--zisetexto);
+    color: var(--grisnamesmartphone);
+    font-weight: 500;
+}
+/*..........fin detail-------------------*/
 /*-----img-cabecera----*/
 .conteiner{
     width: 100%;
@@ -138,6 +306,8 @@ header{
     text-align: center;
     margin-left: 10px;
 }
+ 
+
 /*---conteiner smart zone---*/
 .conteiner-cards-smartphone{
     display: grid;
@@ -217,6 +387,12 @@ header{
 }
 .amarillo-claro{
     color: var(--amarilloclaro);
+}
+.titulo-pequeño{
+    font-size: 20px;
+    margin: 10px 0 0 20px;
+    padding-top: 10px;
+    color: var(--grisnamesmartphone);
 }
 @media (max-width:700px) {
     .cabecera {
