@@ -374,6 +374,57 @@ header{
     cursor: pointer;
 }
 
+/*----------------formulario login------------*/
+.conteiner-from{
+    display: flex;
+    justify-content: center;
+    margin-top: 6%;
+}
+.formulario-login{
+    width: 500px;
+    height: 500px;
+    background: #FFFFFF;
+    box-shadow: inset 10px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.label-title{
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--zisetitulospequeños);
+    text-align: center;
+    color: var(--azulclarosuabe);
+}
+.input-form{
+    
+    width: 400px;
+    height: 50px;
+    background: var(--grissuave);
+    border-radius: 20px;
+    font-size: var(--zisetitulospequeños);
+}
+.boton{
+    width: 200px;
+    height: 60px;
+    background: var(--azulclarosuabe);
+    border-radius: 20px;
+    color: var(--grisnamesmartphone);
+    font-size: var(--zisetitulospequeños);
+    cursor: pointer;
+}
+.pregunta{
+    color: var(--grisnamesmartphone);
+    font-size: var(--zisetitulospequeños);
+}
+.aqui{
+    cursor: pointer;
+    color: var(--azulclarosuabe);
+    text-align: center;
+}
 
 /*--------------------------------------------*/
 .Smart-zone{
