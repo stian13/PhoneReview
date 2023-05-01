@@ -13,17 +13,26 @@
 </head>
 <body>
     <div class="conteiner-from">
-        <form class="formulario-login">
+        <form class="formulario-login" action="validar.php" method="post">
             <label for="" class="label-title">Iniciar Sesion</label>
-            <input type="text" placeholder="    Nombre de usuario" class="input-form">
-            <input type="password" placeholder="    contraseña" class="input-form">
+
+            <input type="text" name="usersesion" placeholder="    Nombre de usuario" class="input-form" required >
+
+            <input type="password" name="contraseñasesion" placeholder="    contraseña" class="input-form" required >
+            
             <input type="submit" value="Iniciar" class="boton">
             <div>
                 <div class="pregunta">No te has registrado?</div>
-                <div class="pregunta aqui">hazlo aqui</div>
+                <div class="pregunta aqui" id="registrosesion">hazlo aqui</div>
             </div>
-            
         </form>
     </div>
+    <script>
+        const botonHazloAqui = document.querySelector('#registrosesion');
+        botonHazloAqui.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href='./singup.html'
+        });
+    </script>
 </body>
 </html>

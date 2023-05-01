@@ -56,11 +56,15 @@ header{
     font-size: var(--zisetitulospequeños);
     margin-left: 10px;
     cursor: pointer;
+    text-decoration: none;
 }
 .cabecera .section-login div{
     display: inline-block;
     font-size: var(--zisetitulospequeños);
     cursor: pointer;
+}
+.cabecera .section-login .sin-style{
+    text-decoration: none;
 }
 .cabecera .section-login div:nth-child(1){
     color: var(--azulclarosuabe);
@@ -74,6 +78,7 @@ header{
 /*----Detail-smatphone----*/
 
 .total-detail{
+    display: none;
     position:absolute;
     z-index: 9;
     right: 0;
@@ -276,6 +281,7 @@ header{
     border-radius: 30px;
     display: grid;
     grid-template-columns: 100px 200px;
+    cursor: pointer;
 }
 
 .img-categoria{
@@ -425,6 +431,32 @@ header{
     color: var(--azulclarosuabe);
     text-align: center;
 }
+        /*---conteiner-mensaje-Bienvenida---*/
+.conteiner-mensaje-Bienvenida{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.conteiner-mensaje-Bienvenida .bienvenida{
+    display: grid;
+    grid-template-columns: 400px;
+    grid-template-rows: 300px 70px  70px;
+}
+.conteiner-mensaje-Bienvenida .conteiner-img-bienvenida{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+}
+.conteiner-mensaje-Bienvenida .img-bienvenida{
+    width: 300px;
+    height: 300px;
+    
+}
+.conteiner-mensaje-Bienvenida .mensaje {
+    text-align: center;
+    font-size: var(--zisetitulospequeños);
+    height: 20px;
+}
 
 /*--------------------------------------------*/
 .Smart-zone{
@@ -445,6 +477,7 @@ header{
     padding-top: 10px;
     color: var(--grisnamesmartphone);
 }
+
 @media (max-width:700px) {
     .cabecera {
        border: none;

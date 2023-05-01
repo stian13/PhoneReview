@@ -12,12 +12,11 @@
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <div class="conteiner-from">
-        <form class="formulario-login singup">
+    <div class="conteiner-from" >
+        <form class="formulario-login singup" action="register.php" method="post">
             <label for="" class="label-title">Registrate</label>
-            <input type="text" placeholder="    Nombre de usuario" class="input-form">
-            <input type="number" placeholder="    Edad" class="input-form">
-            <input type="password" placeholder="    contraseña" class="input-form">
+            <input type="text" name="nombre" placeholder="    Nombre de usuario" class="input-form" required>
+            <input type="password" name="contraseña" placeholder="    contraseña" class="input-form" required>
             <input type="submit" value="Registrar" class="boton">
         </form>
     </div>
