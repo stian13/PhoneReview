@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +20,8 @@
                 <div class="title-principal"><span>Phone</span>Review</div>
             </section>
             <section class="section-pagina ">
-                <ul class="lista-secciones">
-                    <li>
+                <ul class="lista-secciones" >
+                    <li class="li">
                         Principal
                     </li>
                     <li>
@@ -31,12 +32,12 @@
                     </li>
                 </ul>
             </section>
-            <section class="section-login">
-                <div>
-                    registrate
+            <section class="section-login" id="sistem-login">
+                <div id="registro">
+                        registrate
                 </div>
-                <div>
-                    Iniciar Sesion
+                <div id="sesion">
+                        Iniciar Sesion
                 </div>
             </section>
         </div>
@@ -461,5 +462,8 @@
         </div>
     </div>
 </footer>
+<script src ="./main/funciones.js" type="modules"></script>
+<script src="./main/code.js" type="module"></script>
+
 </body>
 </html>
