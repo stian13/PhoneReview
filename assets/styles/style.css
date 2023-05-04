@@ -18,6 +18,7 @@
     --grisnamesmartphone: #818181;
     --azulclarosuabe: #5ECDE0;
     --blanco: white;
+    --blancopuro: #ffffff;
     --lilaclaro: #B4ABEB;
     --amarilloclaro: #E3E084;
     --verdeclaroblanco:  #5EE0B1;
@@ -313,6 +314,29 @@ header{
     margin-left: 10px;
 }
  
+    /*---contenedor de mostrador de categorias---*/
+.contendor-mostrador{
+    display: flex;
+    justify-content: center;
+}
+
+.contendor-mostrador .salida-categoria{
+    width: 50px;
+    cursor: pointer;
+    margin: 0 40px 20px 0;
+}
+.tipo-categoria-title{
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0 20px 0;
+}
+
+.tipo-categoria-title p{
+    margin-left: 100px;
+    color: var(--blanco); 
+    font-size: var(--zizetitulosgrandes);
+}
+    /*-----------------------------------------------*/
 
 /*---conteiner smart zone---*/
 .conteiner-cards-smartphone{
@@ -320,6 +344,9 @@ header{
     grid-template-columns: repeat(4, 260px);
     gap: 20px 20px;
     justify-content: center;
+    height: 770px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .conteiner-cards-smartphone .cards{
     width: 260px;
@@ -344,6 +371,10 @@ header{
     top: 330px;
     
 }
+.cards{
+    background-color: var(--blancopuro);
+}
+
 .conteiner-cards-smartphone .cards .conteiner-puntuacion div:nth-child(1){
     display: inline;
 }
@@ -476,6 +507,17 @@ header{
     margin: 10px 0 0 20px;
     padding-top: 10px;
     color: var(--grisnamesmartphone);
+}
+
+.desactivador{
+    display: ;
+}
+
+.encajador{
+    width: 1300px;
+    border-radius: 50px;
+    background-color: #B4ABEB;
+    
 }
 
 @media (max-width:700px) {

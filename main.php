@@ -5,6 +5,10 @@
         echo 'no existe este usuario';
         die;
     }
+    include("./main/conexion.php");
+    #creando consulta
+    $categorias = "SELECT nombre_categoria, especifico, img_direccion FROM categoria";
+    $celulares = "SELECT nombre, link_img FROM celulares";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="http://localhost/phonereview/assets/styles/style.css">
 </head>
 <body>
 <!--Cabecera !-->
@@ -61,85 +65,24 @@
 <section class="separador">
     <div class="title ">Categorias</div>
     <div class="box-categorias">
-        <div class="conteiner-categorias">
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 14categotiacamara.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smartphone con mejores</div>
-                    <div>Camaras</div>
-                </div>
-        </div>
-            <div class="categoria">
-                <div>
+    <div class="conteiner-categorias">
+
+            <?php $resultado = mysqli_query($conexion, $categorias); 
+            
+            while($row=mysqli_fetch_assoc($resultado)) {?>
+
+                <div class="categoria">
                     <div>
-                        <img src="./assets/imgCategorias/imgsvg/image 13categoriaGamer.svg" alt="" class="img-categoria">
+                        <img src="<?php echo $row["img_direccion"]; ?>" alt="" class="img-categoria">
+                    </div>
+                    <div class="name-categoria">
+                        <div><?php echo $row["nombre_categoria"]; ?></div>
+                        <div><?php echo $row["especifico"]; ?></div>
                     </div>
                 </div>
-                <div class="name-categoria">
-                    <div>Smartphone 
-                        para usuarios</div>
-                    <div>Gamer</div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 11Categotiaalmacenamiento.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smarphone con 
-                        Alto</div>
-                    <div>Almacenamiento</div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 15categoriaresitente.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smarphone</div>
-                    <div>Resistentes</div>
-                </div>
-            </div><div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 16categotiagamaalta.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smarphone
-                        Gama</div>
-                    <div>Altas</div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 17gamamedia.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smartphone 
-                        gama</div>
-                    <div>Media</div>
-                </div>
-            </div><div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 18gamabaja.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smartphone 
-                        Gama</div>
-                    <div>Baja</div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 19categoriamultimedia.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smarphone
-                        para uso de</div>
-                    <div>Multimedia</div>
-                </div>
-            </div>
+
+            <?php }?>
+
         </div>
     </div>
 </section>
@@ -282,86 +225,26 @@
 <section class="separador">
     <div>
     <div class="title Smart-zone">Smart Zone</div>
+
         <div class="conteiner-cards-smartphone">
+
+        <?php $resultado = mysqli_query($conexion, $celulares);
+
+        while($row=mysqli_fetch_assoc($resultado)) {?>
+
+
             <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
+                <img src="<?php echo $row["link_img"]; ?>" alt="" class="img-smartphone">
+                <div class="name-smartphone"><?php echo $row["nombre"]; ?></div>
                 <div class="conteiner-puntuacion">
                     <div>5</div>
                     <span>⭐</span>
                 </div>
             </div>
 
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
+            <?php }?>
 
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
 
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-            
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
             </div>
         </div>
     </div>

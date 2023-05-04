@@ -1,4 +1,111 @@
+<?php
+    include("./main/conexion.php");
+    #creando consulta
+    $categorias = "SELECT nombre_categoria, especifico, img_direccion FROM categoria";
+    $celulares = "SELECT * FROM celulares";
+    #consulta tipo de categorias
+    $categorias_camaras = "SELECT * FROM `celulares` WHERE categoria_id = 1";
+    $categorias_gamer = "SELECT * FROM `celulares` WHERE categoria_id = 2";
+    $categorias_almacenamiento = "SELECT * FROM `celulares` WHERE categoria_id = 3";
+    $categorias_resistentes = "SELECT * FROM `celulares` WHERE categoria_id = 4";
+    $categorias_gama_alta = "SELECT * FROM `celulares` WHERE categoria_id = 5";
+    $categorias_gama_media = "SELECT * FROM `celulares` WHERE categoria_id = 6";
+    $categorias_gama_baja = "SELECT * FROM `celulares` WHERE categoria_id = 7";
+    $categorias_multimedia = "SELECT * FROM `celulares` WHERE categoria_id = 8";
+    #-------------------------------------------------------
 
+
+    $resultado_consulta_celulares = $conexion->query($celulares);
+
+    #--resultado-consultas-especidicas---
+    $resultado_consulta_categoria = $conexion->query($categorias);
+
+
+    $resultado_consulta_categoria_camaras = $conexion->query($categorias_camaras);
+
+    $resultado_consulta_categoria_gamer = $conexion->query($categorias_gamer);
+
+    $resultado_consulta_categoria_almacenamiento = $conexion->query($categorias_almacenamiento);
+
+    $resultado_consulta_categoria_resistentes = $conexion->query($categorias_resistentes);
+
+    $resultado_consulta_categoria_gamaalta = $conexion->query($categorias_gama_alta);
+
+    $resultado_consulta_categoria_gamamedia = $conexion->query($categorias_gama_media);
+
+    $resultado_consulta_categoria_gamabaja = $conexion->query($categorias_gama_baja);
+
+    $resultado_consulta_categoria_multimedia = $conexion->query($categorias_multimedia);
+
+#arrays almacen
+    $celulares_array = array();
+    $categorias_celulares = array();
+    #arrays categoria unica celulares
+
+    $categorias_celulares_camaras = array();
+    $categorias_celulares_gamer = array();
+    $categorias_celulares_alamcenamiento = array();
+    $categorias_celulares_resistentes = array();
+    $categorias_celulares_gamaalta = array();
+    $categorias_celulares_gamamedia = array();
+    $categorias_celulares_gamabaja = array();
+    $categorias_celulares_multimedia = array();
+
+    function ciclo_agregador($consulta_resultado, $array)
+    {
+        while ($fila_categorias = 
+        $consulta_resultado->fetch_assoc()) {
+             $array[] = $fila_categorias;
+        } 
+        return $array;
+    }
+
+    $categorias_celulares_camaras =ciclo_agregador($resultado_consulta_categoria_camaras, $categorias_celulares_camaras);
+
+    $categorias_celulares_gamer =ciclo_agregador($resultado_consulta_categoria_gamer, $categorias_celulares_gamer);
+
+    $categorias_celulares_alamcenamiento =ciclo_agregador($resultado_consulta_categoria_almacenamiento, $categorias_celulares_alamcenamiento);
+
+    $categorias_celulares_resistentes =ciclo_agregador($resultado_consulta_categoria_resistentes, $categorias_celulares_resistentes);
+
+    $categorias_celulares_gamaalta =ciclo_agregador($resultado_consulta_categoria_gamaalta, $categorias_celulares_gamaalta);
+
+    $categorias_celulares_gamamedia =ciclo_agregador($resultado_consulta_categoria_gamamedia, $categorias_celulares_gamamedia);
+
+    $categorias_celulares_gamabaja =ciclo_agregador($resultado_consulta_categoria_gamabaja, $categorias_celulares_gamabaja);
+
+    $categorias_celulares_multimedia =ciclo_agregador($resultado_consulta_categoria_multimedia, $categorias_celulares_multimedia);
+
+    
+    
+
+    while ($fila_categorias = $resultado_consulta_categoria->fetch_assoc()) {
+        $categorias_celulares[] = $fila_categorias;
+    }
+
+    while ($fila_celulares = $resultado_consulta_celulares->fetch_assoc()) {
+        $celulares_array[] = $fila_celulares;
+    }
+
+    
+
+
+    $celulares_json = json_encode($celulares_array);
+    $categorias_json = json_encode($categorias_celulares);
+
+#json resultado categorias
+
+    $camaras_json = json_encode($categorias_celulares_camaras);
+    $gamer_json = json_encode($categorias_celulares_gamer);
+    $alamcenamiento_json = json_encode($categorias_celulares_camaras);
+    $resistentes_json = json_encode($categorias_celulares_resistentes);
+    $gamaalta_json = json_encode($categorias_celulares_gamaalta);
+    $gamamedia_json = json_encode($categorias_celulares_gamamedia);
+    $gamabaja_json = json_encode($categorias_celulares_gamabaja);
+    $multimedia_json = json_encode($categorias_celulares_multimedia);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +117,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="http://localhost/phonereview/assets/styles/style.css" >
 </head>
 <body>
 <!--Cabecera !-->
@@ -55,87 +162,43 @@
     <div class="title ">Categorias</div>
     <div class="box-categorias">
         <div class="conteiner-categorias">
-            <div class="categoria">
+            <?php $resultado = mysqli_query($conexion, $categorias); 
+            
+            while($row=mysqli_fetch_assoc($resultado)) {?>
+
+            <div class="categoria" id="<?php echo $row["especifico"]; ?>">
                 <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 14categotiacamara.svg" alt="" class="img-categoria">
+                    <img src="<?php echo $row["img_direccion"]; ?>" alt="" class="img-categoria">
                 </div>
                 <div class="name-categoria">
-                    <div>Smartphone con mejores</div>
-                    <div>Camaras</div>
-                </div>
-        </div>
-            <div class="categoria">
-                <div>
-                    <div>
-                        <img src="./assets/imgCategorias/imgsvg/image 13categoriaGamer.svg" alt="" class="img-categoria">
-                    </div>
-                </div>
-                <div class="name-categoria">
-                    <div>Smartphone 
-                        para usuarios</div>
-                    <div>Gamer</div>
+                    <div><?php echo $row["nombre_categoria"]; ?></div>
+                    <div><?php echo $row["especifico"]; ?></div>
                 </div>
             </div>
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 11Categotiaalmacenamiento.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smarphone con 
-                        Alto</div>
-                    <div>Almacenamiento</div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 15categoriaresitente.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smarphone</div>
-                    <div>Resistentes</div>
-                </div>
-            </div><div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 16categotiagamaalta.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smarphone
-                        Gama</div>
-                    <div>Altas</div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 17gamamedia.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smartphone 
-                        gama</div>
-                    <div>Media</div>
-                </div>
-            </div><div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 18gamabaja.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smartphone 
-                        Gama</div>
-                    <div>Baja</div>
-                </div>
-            </div>
-            <div class="categoria">
-                <div>
-                    <img src="./assets/imgCategorias/imgsvg/image 19categoriamultimedia.svg" alt="" class="img-categoria">
-                </div>
-                <div class="name-categoria">
-                    <div>Smarphone
-                        para uso de</div>
-                    <div>Multimedia</div>
-                </div>
-            </div>
+
+            <?php } mysqli_free_result($resultado);?>
         </div>
     </div>
 </section>
+
+    <!--contenedor de mostrador de categorias-->
+
+    <section class="contendor-mostrador">
+    <div class="encajador desactivador" >
+                
+                <div class="tipo-categoria-title desactivador">
+                        
+                        <p>Smartphone con mejores Camaras</p>
+                        <span>
+                            <img src="./assets/iconos/cerrar-ventana.png" alt="" class="salida-categoria">
+                        </span>
+                    </div>
+
+                    <div class="conteiner-cards-smartphone desactivador">
+                            
+                    </div>
+                </div>
+    </section>
 
 <section class="total-detail">
     <div class="detail-smartphone">
@@ -274,88 +337,28 @@
 <!--Celulares-->
 <section class="separador">
     <div>
-    <div class="title Smart-zone">Smart Zone</div>
-        <div class="conteiner-cards-smartphone">
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
+        <div class="title Smart-zone">Smart Zone</div>
+
+            <div class="conteiner-cards-smartphone">
+
+                <?php $resultado = mysqli_query($conexion, $celulares);
+
+                    while($row=mysqli_fetch_assoc($resultado)) {?>
+
+
+                    <div class="cards">
+                        <img src="<?php echo $row["link_img"]; ?>" alt="" class="img-smartphone">
+                        <div class="name-smartphone"><?php echo $row["nombre"]; ?></div>
+                        <div class="conteiner-puntuacion">
+                            <div>5</div>
+                            <span>⭐</span>
+                        </div>
+                    </div>
+
+                <?php } mysqli_free_result($resultado);?>
+                    
             </div>
 
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-            
-            <div class="cards">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-            </div>
         </div>
     </div>
 </section>
@@ -462,8 +465,35 @@
         </div>
     </div>
 </footer>
-<script src ="./main/funciones.js" type="modules"></script>
-<script src="./main/code.js" type="module"></script>
+<script>
+    
+    //celulares
+
+    let celulares = <?php echo $celulares_json; ?>;
+    //categorias
+    let categorias = <?php echo $categorias_json; ?>;
+    let camaraCategoria = <?php echo $camaras_json; ?>;
+    let gamerCategoria = <?php echo $gamer_json; ?>;
+    let almacenamientoCategoria = <?php echo $alamcenamiento_json; ?>;
+    let resistentesCategoria = <?php echo $resistentes_json; ?>;
+    let gamaAltaCategoria = <?php echo $gamaalta_json; ?>;
+    let gamaMediaCategoria = <?php echo $gamaalta_json; ?>;
+    let gamaBajaCategoria = <?php echo $gamabaja_json; ?>;
+    let multimediaCategoria = <?php echo $multimedia_json; ?>;
+    console.log(camaraCategoria);
+    console.log(gamerCategoria);
+    console.log(almacenamientoCategoria);
+    console.log(resistentesCategoria);
+    console.log(gamaAltaCategoria);
+    console.log(gamaMediaCategoria);
+    console.log(gamaBajaCategoria);
+    console.log(multimediaCategoria);
+    
+    
+
+
+</script>
+<script src="http://localhost/phonereview/main/code.js" type="module"></script>
 
 </body>
 </html>
