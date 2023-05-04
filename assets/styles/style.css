@@ -509,15 +509,17 @@ header{
     color: var(--grisnamesmartphone);
 }
 
-.desactivador{
-    display: ;
-}
+
 
 .encajador{
     width: 1300px;
     border-radius: 50px;
     background-color: #B4ABEB;
     
+}
+
+.desactivador{
+    display: none;
 }
 
 @media (max-width:700px) {

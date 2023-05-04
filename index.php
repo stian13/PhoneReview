@@ -184,20 +184,20 @@
     <!--contenedor de mostrador de categorias-->
 
     <section class="contendor-mostrador">
-    <div class="encajador desactivador" >
+        <div class="encajador desactivador" >
                 
-                <div class="tipo-categoria-title desactivador">
+                <div class="tipo-categoria-title">
                         
-                        <p>Smartphone con mejores Camaras</p>
-                        <span>
+                        <p class='titulo'></p>
+                        <span class="contenedor-img-cierre">
                             <img src="./assets/iconos/cerrar-ventana.png" alt="" class="salida-categoria">
                         </span>
-                    </div>
-
-                    <div class="conteiner-cards-smartphone desactivador">
-                            
-                    </div>
                 </div>
+
+                <div class="conteiner-cards-smartphone">
+                            
+                </div>
+        </div>
     </section>
 
 <section class="total-detail">
@@ -480,20 +480,13 @@
     let gamaMediaCategoria = <?php echo $gamaalta_json; ?>;
     let gamaBajaCategoria = <?php echo $gamabaja_json; ?>;
     let multimediaCategoria = <?php echo $multimedia_json; ?>;
-    console.log(camaraCategoria);
-    console.log(gamerCategoria);
-    console.log(almacenamientoCategoria);
-    console.log(resistentesCategoria);
-    console.log(gamaAltaCategoria);
-    console.log(gamaMediaCategoria);
-    console.log(gamaBajaCategoria);
-    console.log(multimediaCategoria);
+    
     
     
 
 
 </script>
-<script src="http://localhost/phonereview/main/code.js" type="module"></script>
+<script src="http://localhost/phonereview/main/code.js" ></script>
 
 </body>
 </html>
