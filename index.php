@@ -137,6 +137,7 @@
             <section class="section-cabecera">
                 <div class="title-principal"><span>Phone</span>Review</div>
             </section>
+
             <section class="section-pagina ">
                 <ul class="lista-secciones" >
                     <li class="li">
@@ -156,6 +157,7 @@
                     </li>
                 </ul>
             </section>
+            
             <section class="section-login" id="sistem-login">
                 <div id="registro">
                         registrate

@@ -76,6 +76,13 @@ header{
     color: var(--azulclarosuabe);
     margin-right: 10px;
 }
+
+.cabecera .section-login .cerra-sesion{
+    width: 20px;
+}
+.cabecera .section-login .usuarioInit{
+    background-color: #5ECDE0;
+}
 .cabecera .section-login div:nth-child(2){
     background-color: var(--grissuave);
     border-radius: 5px;
