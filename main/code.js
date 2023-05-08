@@ -18,9 +18,28 @@ const titulo = document.querySelector('.titulo')
 const contenedorImgCierre = document.querySelector('.contenedor-img-cierre');
 const salidaCategoria = document.querySelector('.salida-categoria');
 
-const conteinerCardsSmartphone = document.querySelector('.conteiner-cards-smartphone');
-const cards = document.querySelector('.cards');
+const principal = document.querySelector('#Principal');
+const equiposNuevos = document.querySelector('#equipos_nuevos');
 
+
+const conteinerCardsSmartphone = document.querySelector('.conteiner-cards-smartphone');
+
+const cards = document.querySelector('.cards');
+const listSmarphone = document.querySelector('.list-smarphone');
+const nuevosSmarphones = document.querySelector('.nuevos-smarphones')
+
+principal.appendChild(listSmarphone)
+equiposNuevos.appendChild(nuevosSmarphones)
+
+
+//smart-zone y smartphone neews
+
+
+        //detail- Detalles del telefono 
+
+
+
+        //-----------------------------
 let dibujo;
 
 
@@ -54,6 +73,8 @@ botonSesion.addEventListener('click', function(event) {
     llamado()
 })
 
+celulares
+
 //-----categorias-----
 categorias
 camaraCategoria
@@ -64,6 +85,8 @@ gamaAltaCategoria
 gamaMediaCategoria
 gamaBajaCategoria
 multimediaCategoria
+
+nuevos
 
 const titulosCategorias = [
     "Smartphone con mejores Camaras",
@@ -76,32 +99,78 @@ const titulosCategorias = [
     "Smarphone para uso de Multimedia"
 ];
 
-/*
-    
-*/
+
+
 //--------------------
 
-function renderPhones(array,encabezado) {
-    encajador.classList.toggle('desactivador');
-    conteinerCardsSmartphone.innerHTML = '';
-    titulo.innerHTML = '';
-    titulo.innerHTML = encabezado;
-    for (let i = 0; i < array.length; i++) {
-        const linkCelular = array[i].link_img;
-        const nombreCelular = array[i].nombre;
-        dibujo = `
-            <div class="cards">
-                <img src="${linkCelular}" alt="" class="img-smartphone">
-                <div class="name-smartphone"> ${nombreCelular} </div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
+
+
+
+
+   
+function renderPhones(array, encabezado, ubicacion) {
+    
+
+        for (let i = 0; i < array.length; i++) {
+            const linkCelular = array[i].link_img;
+            const nombreCelular = array[i].nombre;
+            const idTelefono = array[i].id;
+            /*
+            dibujo = `
+                <div class="cards" id = "${idTelefono}">
+                    <img src="${linkCelular}" alt="" class="img-smartphone">
+                    <div class="name-smartphone"> ${nombreCelular} </div>
+                    <div class="conteiner-puntuacion">
+                        <div>5</div>
+                        <span>⭐</span>
+                    </div>
                 </div>
-            </div>
-        `;
-        conteinerCardsSmartphone.innerHTML += dibujo;
-    }
+            `;
+            */
+            const divCards = document.createElement('div');
+            divCards.classList.add('cards');
+            divCards.classList.add(idTelefono);
+    
+            const imgSmarphone = document.createElement('img');
+            imgSmarphone.setAttribute('src', linkCelular);
+            imgSmarphone.classList.add('img-smartphone');
+    
+            const divName = document.createElement('div');
+            divName.classList.add('name-smartphone');
+            divName.innerHTML = nombreCelular;
+    
+            const divPuntuacion = document.createElement('div');
+            divPuntuacion.classList.add('conteiner-puntuacion');
+    
+    
+            const divPunto = document.createElement('div');
+            divPunto.innerText  = "5";
+            const spanEstrellita = document.createElement('span');
+            spanEstrellita.innerText = "⭐";
+            divPuntuacion.append(divPunto, spanEstrellita)
+    
+            divCards.addEventListener('click', function () {
+                console.log(divCards)
+            })
+    
+            divCards.append(imgSmarphone, divName, divPuntuacion);
+            
+            ubicacion.appendChild(divCards)
+        }
+    
 }
+
+function tipoRenderizasdo(array2, encabezado2, ubicacion2, boleano) {
+    if (boleano === true) {
+        encajador.classList.toggle('desactivador');
+        conteinerCardsSmartphone.innerHTML = '';
+        titulo.innerHTML = '';
+        titulo.innerHTML = encabezado2;
+        renderPhones(array2, encabezado2,ubicacion2)
+    } else if (boleano === false) {
+        renderPhones(array2, "", ubicacion2)
+    }
+}    
 
 
 salidaCategoria.addEventListener('click', function () {
@@ -110,36 +179,40 @@ salidaCategoria.addEventListener('click', function () {
 })
 
 categoriaCamaras.addEventListener('click', function () {
-    renderPhones(camaraCategoria,titulosCategorias[0]);
+    tipoRenderizasdo(camaraCategoria,titulosCategorias[0], conteinerCardsSmartphone, true);
 });
 
 categoriasGamer.addEventListener('click', function () {
-    renderPhones(gamerCategoria,titulosCategorias[1])
+    tipoRenderizasdo(gamerCategoria,titulosCategorias[1], conteinerCardsSmartphone, true)
 });
 
 categoriaAlamacenamiento.addEventListener('click', function () {
-    renderPhones(almacenamientoCategoria,titulosCategorias[2])
+    tipoRenderizasdo(almacenamientoCategoria,titulosCategorias[2], conteinerCardsSmartphone, true)
 });
 
 categoriaResistentes.addEventListener('click', function () {
-    renderPhones(resistentesCategoria, titulosCategorias[3])
+    tipoRenderizasdo(resistentesCategoria, titulosCategorias[3], conteinerCardsSmartphone, true)
 });
 
 categoriaGamaAlta.addEventListener('click', function () {
-    renderPhones(gamaAltaCategoria, titulosCategorias[4])
+    tipoRenderizasdo(gamaAltaCategoria, titulosCategorias[4], conteinerCardsSmartphone, true)
 });
 
 categoriaGamaMedia.addEventListener('click', function () {
-    renderPhones(gamaMediaCategoria,titulosCategorias[5])
+    tipoRenderizasdo(gamaMediaCategoria,titulosCategorias[5], conteinerCardsSmartphone, true)
 });
 
 categoriaGamaBaja.addEventListener('click', function () {
-    renderPhones(gamaBajaCategoria,titulosCategorias[6])
+    tipoRenderizasdo(gamaBajaCategoria,titulosCategorias[6], conteinerCardsSmartphone, true)
 });
 
 categoriaMultimedia.addEventListener('click', function () {
-    renderPhones(multimediaCategoria,titulosCategorias[7])
+    tipoRenderizasdo(multimediaCategoria,titulosCategorias[7], conteinerCardsSmartphone, true)
 });
+
+tipoRenderizasdo(celulares, "", listSmarphone, false);
+tipoRenderizasdo(nuevos, "", nuevosSmarphones, false);
+
 
 
 

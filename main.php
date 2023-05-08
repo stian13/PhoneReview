@@ -9,6 +9,125 @@
     #creando consulta
     $categorias = "SELECT nombre_categoria, especifico, img_direccion FROM categoria";
     $celulares = "SELECT nombre, link_img FROM celulares";
+
+# seccion celulares-----------
+
+include("./main/conexion.php");
+    #creando consulta
+    $categorias = "SELECT nombre_categoria, especifico, img_direccion FROM categoria WHERE id_categoria < 9";
+    $celulares = "SELECT * FROM celulares";
+    #consulta tipo de categorias
+    $categorias_camaras = "SELECT * FROM `celulares` WHERE categoria_id = 1";
+    $categorias_gamer = "SELECT * FROM `celulares` WHERE categoria_id = 2";
+    $categorias_almacenamiento = "SELECT * FROM `celulares` WHERE categoria_id = 3";
+    $categorias_resistentes = "SELECT * FROM `celulares` WHERE categoria_id = 4";
+    $categorias_gama_alta = "SELECT * FROM `celulares` WHERE categoria_id = 5";
+    $categorias_gama_media = "SELECT * FROM `celulares` WHERE categoria_id = 6";
+    $categorias_gama_baja = "SELECT * FROM `celulares` WHERE categoria_id = 7";
+    $categorias_multimedia = "SELECT * FROM `celulares` WHERE categoria_id = 8";
+    $categorias_nuevo = "SELECT * FROM `celulares` WHERE categoria_id = 9";
+    #-------------------------------------------------------
+
+
+    $resultado_consulta_celulares = $conexion->query($celulares);
+
+    #--resultado-consultas-especidicas---
+    $resultado_consulta_categoria = $conexion->query($categorias);
+
+
+    $resultado_consulta_categoria_camaras = $conexion->query($categorias_camaras);
+
+    $resultado_consulta_categoria_gamer = $conexion->query($categorias_gamer);
+
+    $resultado_consulta_categoria_almacenamiento = $conexion->query($categorias_almacenamiento);
+
+    $resultado_consulta_categoria_resistentes = $conexion->query($categorias_resistentes);
+
+    $resultado_consulta_categoria_gamaalta = $conexion->query($categorias_gama_alta);
+
+    $resultado_consulta_categoria_gamamedia = $conexion->query($categorias_gama_media);
+
+    $resultado_consulta_categoria_gamabaja = $conexion->query($categorias_gama_baja);
+
+    $resultado_consulta_categoria_multimedia = $conexion->query($categorias_multimedia);
+
+    $resultado_consulta_categoria_nuevo = $conexion->query($categorias_nuevo);
+
+
+#arrays almacen
+    $celulares_array = array();
+    $categorias_celulares = array();
+    #arrays categoria unica celulares
+
+    $categorias_celulares_camaras = array();
+    $categorias_celulares_gamer = array();
+    $categorias_celulares_alamcenamiento = array();
+    $categorias_celulares_resistentes = array();
+    $categorias_celulares_gamaalta = array();
+    $categorias_celulares_gamamedia = array();
+    $categorias_celulares_gamabaja = array();
+    $categorias_celulares_multimedia = array();
+    $categorias_celulares_nuevo = array();
+
+    function ciclo_agregador($consulta_resultado, $array)
+    {
+        while ($fila_categorias = 
+        $consulta_resultado->fetch_assoc()) {
+             $array[] = $fila_categorias;
+        } 
+        return $array;
+    }
+
+    $categorias_celulares_camaras =ciclo_agregador($resultado_consulta_categoria_camaras, $categorias_celulares_camaras);
+
+    $categorias_celulares_gamer =ciclo_agregador($resultado_consulta_categoria_gamer, $categorias_celulares_gamer);
+
+    $categorias_celulares_alamcenamiento =ciclo_agregador($resultado_consulta_categoria_almacenamiento, $categorias_celulares_alamcenamiento);
+
+    $categorias_celulares_resistentes =ciclo_agregador($resultado_consulta_categoria_resistentes, $categorias_celulares_resistentes);
+
+    $categorias_celulares_gamaalta =ciclo_agregador($resultado_consulta_categoria_gamaalta, $categorias_celulares_gamaalta);
+
+    $categorias_celulares_gamamedia =ciclo_agregador($resultado_consulta_categoria_gamamedia, $categorias_celulares_gamamedia);
+
+    $categorias_celulares_gamabaja =ciclo_agregador($resultado_consulta_categoria_gamabaja, $categorias_celulares_gamabaja);
+
+    $categorias_celulares_multimedia =ciclo_agregador($resultado_consulta_categoria_multimedia, $categorias_celulares_multimedia);
+
+    $categorias_celulares_nuevo =ciclo_agregador($resultado_consulta_categoria_nuevo, $categorias_celulares_nuevo);
+
+
+    
+    
+
+    while ($fila_categorias = $resultado_consulta_categoria->fetch_assoc()) {
+        $categorias_celulares[] = $fila_categorias;
+    }
+
+    while ($fila_celulares = $resultado_consulta_celulares->fetch_assoc()) {
+        $celulares_array[] = $fila_celulares;
+    }
+
+    
+
+
+    $celulares_json = json_encode($celulares_array);
+    $categorias_json = json_encode($categorias_celulares);
+
+#json resultado categorias
+
+    $camaras_json = json_encode($categorias_celulares_camaras);
+    $gamer_json = json_encode($categorias_celulares_gamer);
+    $alamcenamiento_json = json_encode($categorias_celulares_camaras);
+    $resistentes_json = json_encode($categorias_celulares_resistentes);
+    $gamaalta_json = json_encode($categorias_celulares_gamaalta);
+    $gamamedia_json = json_encode($categorias_celulares_gamamedia);
+    $gamabaja_json = json_encode($categorias_celulares_gamabaja);
+    $multimedia_json = json_encode($categorias_celulares_multimedia);
+    $nuevo_json = json_encode($categorias_celulares_nuevo);
+
+#-----------------------------
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

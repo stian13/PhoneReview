@@ -1,7 +1,7 @@
 <?php
     include("./main/conexion.php");
     #creando consulta
-    $categorias = "SELECT nombre_categoria, especifico, img_direccion FROM categoria";
+    $categorias = "SELECT nombre_categoria, especifico, img_direccion FROM categoria WHERE id_categoria < 9";
     $celulares = "SELECT * FROM celulares";
     #consulta tipo de categorias
     $categorias_camaras = "SELECT * FROM `celulares` WHERE categoria_id = 1";
@@ -12,6 +12,7 @@
     $categorias_gama_media = "SELECT * FROM `celulares` WHERE categoria_id = 6";
     $categorias_gama_baja = "SELECT * FROM `celulares` WHERE categoria_id = 7";
     $categorias_multimedia = "SELECT * FROM `celulares` WHERE categoria_id = 8";
+    $categorias_nuevo = "SELECT * FROM `celulares` WHERE categoria_id = 9";
     #-------------------------------------------------------
 
 
@@ -37,6 +38,9 @@
 
     $resultado_consulta_categoria_multimedia = $conexion->query($categorias_multimedia);
 
+    $resultado_consulta_categoria_nuevo = $conexion->query($categorias_nuevo);
+
+
 #arrays almacen
     $celulares_array = array();
     $categorias_celulares = array();
@@ -50,6 +54,7 @@
     $categorias_celulares_gamamedia = array();
     $categorias_celulares_gamabaja = array();
     $categorias_celulares_multimedia = array();
+    $categorias_celulares_nuevo = array();
 
     function ciclo_agregador($consulta_resultado, $array)
     {
@@ -75,6 +80,9 @@
     $categorias_celulares_gamabaja =ciclo_agregador($resultado_consulta_categoria_gamabaja, $categorias_celulares_gamabaja);
 
     $categorias_celulares_multimedia =ciclo_agregador($resultado_consulta_categoria_multimedia, $categorias_celulares_multimedia);
+
+    $categorias_celulares_nuevo =ciclo_agregador($resultado_consulta_categoria_nuevo, $categorias_celulares_nuevo);
+
 
     
     
@@ -103,6 +111,7 @@
     $gamamedia_json = json_encode($categorias_celulares_gamamedia);
     $gamabaja_json = json_encode($categorias_celulares_gamabaja);
     $multimedia_json = json_encode($categorias_celulares_multimedia);
+    $nuevo_json = json_encode($categorias_celulares_nuevo);
 
 
 ?>
@@ -118,6 +127,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="http://localhost/phonereview/assets/styles/style.css" >
+    <link rel="stylesheet" href="http://localhost/phonereview/assets/styles/stylesmarphone.css">
+    <link rel="stylesheet" href="http://localhost/phonereview/assets/styles/stylesnewsmarphone.css">
 </head>
 <body>
 <!--Cabecera !-->
@@ -129,13 +140,19 @@
             <section class="section-pagina ">
                 <ul class="lista-secciones" >
                     <li class="li">
-                        Principal
+                        <a href="#Principal" class="enlases">
+                            Smart Zone
+                        </a>
                     </li>
                     <li>
-                        Categorias
+                        <a href="#grupo_categorias" class="enlases">
+                            Categorias
+                        </a>
                     </li>
                     <li>
-                        Nuevos Equipos
+                        <a href="#equipos_nuevos" class="enlases">
+                            Nuevos Equipos
+                        </a>
                     </li>
                 </ul>
             </section>
@@ -147,8 +164,149 @@
                         Iniciar Sesion
                 </div>
             </section>
-        </div>
-    </header>
+            <!--detail-->
+
+        <section class="total-detail desactivador">
+
+            <div class="detail-smartphone">
+                <!--smarphone img-->
+                <div class="box-smartphone">
+                    <img src="" alt="" class="exit">
+                    <img src="" alt="" class="photo-smarphone">
+                </div>
+                <!--smarphone name-->
+                <div class="name-smartphone-detail">Samsung Galaxy A52</div>
+                <!--smarphone puntos 1-->
+                <div class="total-puntos-user">
+                    <div>Puntuacion de usuarios</div>
+                    <div class="puntos">
+                        <div>4</div><span>⭐</span>
+                    </div>
+                </div>
+                <!--smarphone caracteristicas-->
+                <div class="titulo-pequeño " >Caracteristicas</div>
+                <div class="conteiner-caracteristicas">
+                    <div class="caracteristica">
+                        <div class="tipo-carateristica">
+                            <img src="./assets/iconos/bateria.png" alt="">
+                            <span>Bateria</span>
+                        </div>
+                        <div class="dato-caracteristica">5000 mAh</div>
+                    </div>
+                    
+                    <div class="caracteristica">
+                        <div class="tipo-carateristica">
+                            <img src="./assets/iconos/ram.png" alt="">
+                            <span>RAM</span>
+                        </div>
+                        <div class="dato-caracteristica">17 GB</div>
+                    </div>
+
+                    <div class="caracteristica">
+                        <div class="tipo-carateristica">
+                            <img src="./assets/iconos/camara_frontal.png" alt="">
+                            <span>Camara Trasera</span>
+                        </div>
+                        <div class="dato-caracteristica">100 px</div>
+                    </div>
+
+                    <div class="caracteristica">
+                        <div class="tipo-carateristica">
+                            <img src="./assets/iconos/camara_frontal.png" alt="">
+                            <span>Camara Frontal</span>
+                        </div>
+                        <div class="dato-caracteristica">17 GB</div>
+                    </div>
+
+                    <div class="caracteristica">
+                        <div class="tipo-carateristica">
+                            <img src="./assets/iconos/androide.png" alt="">
+                            <span>Sistema operativo</span>
+                        </div>
+                        <div class="dato-caracteristica">Android 12 oreo</div>
+                    </div>
+
+                    <div class="caracteristica">
+                        <div class="tipo-carateristica">
+                            <img src="./assets/iconos/disco-duro.png" alt="">
+                            <span>Memoria</span>
+                        </div>
+                        <div class="dato-caracteristica">Andr256 GB</div>
+                    </div>
+
+                    <div class="caracteristica">
+                        <div class="tipo-carateristica">
+                            <img src="./assets/iconos/androide.png" alt="">
+                            <span>Puntos antuntu</span>
+                        </div>
+                        <div class="dato-caracteristica">100.203.21</div>
+                    </div>
+
+                    <div class="caracteristica">
+                        <div class="tipo-carateristica">
+                            <img src="./assets/iconos/procesador.png" alt="">
+                            <span>Procesador</span>
+                        </div>
+                        <div class="dato-caracteristica">Cualcon snapdragon 850 plus bronce</div>
+                    </div>
+                </div>
+                <!--smarphone comentarios-->
+                <div class="titulo-pequeño">Comentarios</div>
+                
+                <form class="comentario-user">
+                    <div class="name-user">Pepito</div>
+                    <div class="conteiner-input">
+                        <input type="text" placeholder="    Comenta" class="input-comentario">
+                    </div>
+                    <label for="" class="label-puntos">Da una puntuacion</label>
+                    <select name="numero" id="numero" class="dar-puntuacion">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <input type="submit" value="Enviar" class="boton-enviar">
+                </form>
+                
+                <div class="todos-comentarios">
+            <div class="comentario-user-other">
+                <div class="name-use">gabriel</div>
+                    <div class="parrafo">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium numquam quae minima, sint consequatur quasi voluptatibus amet tenetur natus, sit a recusandae quisquam, dolore illo mollitia est. Dolore, vero ipsum.
+                    </div>
+                    <div class="caja-puntos">
+                        <div>5</div>
+                        <samp>⭐</samp>
+                    </div>
+                </div>
+                <div class="comentario-user-other">
+                    <div class="name-use">gabriel</div>
+                        <div class="parrafo">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium numquam quae minima, sint consequatur quasi voluptatibus amet tenetur natus, sit a recusandae quisquam, dolore illo mollitia est. Dolore, vero ipsum.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate porro hic tempora minima magnam quae? Quisquam, ipsa? Alias id quisquam odit sapiente eveniet minus molestiae, maxime nulla odio quidem reprehenderit.
+                        </div>
+                        <div class="caja-puntos">
+                            <div>5</div>
+                            <samp>⭐</samp>
+                        </div>
+                    </div>
+                </div>
+                <!--smarphone tienda oficial-->
+                <div class="tienda">
+                    <div>
+                        <a href="" class="link-tienda">Tienda oficial del smartphone aqui</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        
+    </div>
+</header>
+
+
+
     <section class="conteiner">
         <div class="conteiner-img-cabecera">
             <div class="capa"></div>
@@ -159,7 +317,7 @@
 
     <!--Categoria dispositivo-->
 <section class="separador">
-    <div class="title ">Categorias</div>
+    <div class="title " id = "grupo_categorias">Categorias</div>
     <div class="box-categorias">
         <div class="conteiner-categorias">
             <?php $resultado = mysqli_query($conexion, $categorias); 
@@ -181,6 +339,8 @@
     </div>
 </section>
 
+
+
     <!--contenedor de mostrador de categorias-->
 
     <section class="contendor-mostrador">
@@ -200,163 +360,16 @@
         </div>
     </section>
 
-<section class="total-detail">
-    <div class="detail-smartphone">
-        <!--smarphone img-->
-        <div class="box-smartphone">
-            <img src="" alt="" class="exit">
-            <img src="" alt="" class="photo-smarphone">
-        </div>
-        <!--smarphone name-->
-        <div class="name-smartphone-detail">Samsung Galaxy A52</div>
-         <!--smarphone puntos 1-->
-        <div class="total-puntos-user">
-            <div>Puntuacion de usuarios</div>
-            <div class="puntos">
-                <div>4</div><span>⭐</span>
-            </div>
-        </div>
-         <!--smarphone caracteristicas-->
-        <div class="titulo-pequeño">Caracteristicas</div>
-        <div class="conteiner-caracteristicas">
-            <div class="caracteristica">
-                <div class="tipo-carateristica">
-                    <img src="./assets/iconos/bateria.png" alt="">
-                    <span>Bateria</span>
-                </div>
-                <div class="dato-caracteristica">5000 mAh</div>
-            </div>
-            
-            <div class="caracteristica">
-                <div class="tipo-carateristica">
-                    <img src="./assets/iconos/ram.png" alt="">
-                    <span>RAM</span>
-                </div>
-                <div class="dato-caracteristica">17 GB</div>
-            </div>
 
-            <div class="caracteristica">
-                <div class="tipo-carateristica">
-                    <img src="./assets/iconos/camara_frontal.png" alt="">
-                    <span>Camara Trasera</span>
-                </div>
-                <div class="dato-caracteristica">100 px</div>
-            </div>
-
-            <div class="caracteristica">
-                <div class="tipo-carateristica">
-                    <img src="./assets/iconos/camara_frontal.png" alt="">
-                    <span>Camara Frontal</span>
-                </div>
-                <div class="dato-caracteristica">17 GB</div>
-            </div>
-
-            <div class="caracteristica">
-                <div class="tipo-carateristica">
-                    <img src="./assets/iconos/androide.png" alt="">
-                    <span>Sistema operativo</span>
-                </div>
-                <div class="dato-caracteristica">Android 12 oreo</div>
-            </div>
-
-            <div class="caracteristica">
-                <div class="tipo-carateristica">
-                    <img src="./assets/iconos/disco-duro.png" alt="">
-                    <span>Memoria</span>
-                </div>
-                <div class="dato-caracteristica">Andr256 GB</div>
-            </div>
-
-            <div class="caracteristica">
-                <div class="tipo-carateristica">
-                    <img src="./assets/iconos/androide.png" alt="">
-                    <span>Puntos antuntu</span>
-                </div>
-                <div class="dato-caracteristica">100.203.21</div>
-            </div>
-
-            <div class="caracteristica">
-                <div class="tipo-carateristica">
-                    <img src="./assets/iconos/procesador.png" alt="">
-                    <span>Procesador</span>
-                </div>
-                <div class="dato-caracteristica">Cualcon snapdragon 850 plus bronce</div>
-            </div>
-        </div>
-         <!--smarphone comentarios-->
-        <div class="titulo-pequeño">Comentarios</div>
-        
-        <form class="comentario-user">
-            <div class="name-user">Pepito</div>
-            <from class="conteiner-input">
-                <input type="text" placeholder="    Comenta" class="input-comentario">
-            </from>
-            <label for="" class="label-puntos">Da una puntuacion</label>
-            <select name="numero" id="numero" class="dar-puntuacion">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <input type="submit" value="Enviar" class="boton-enviar">
-        </form>
-        
-        <div class="todos-comentarios">
-    <div class="comentario-user-other">
-        <div class="name-use">gabriel</div>
-            <div class="parrafo">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium numquam quae minima, sint consequatur quasi voluptatibus amet tenetur natus, sit a recusandae quisquam, dolore illo mollitia est. Dolore, vero ipsum.
-            </div>
-            <div class="caja-puntos">
-                <div>5</div>
-                <samp>⭐</samp>
-            </div>
-        </div>
-        <div class="comentario-user-other">
-            <div class="name-use">gabriel</div>
-                <div class="parrafo">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium numquam quae minima, sint consequatur quasi voluptatibus amet tenetur natus, sit a recusandae quisquam, dolore illo mollitia est. Dolore, vero ipsum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate porro hic tempora minima magnam quae? Quisquam, ipsa? Alias id quisquam odit sapiente eveniet minus molestiae, maxime nulla odio quidem reprehenderit.
-                </div>
-                <div class="caja-puntos">
-                    <div>5</div>
-                    <samp>⭐</samp>
-                </div>
-            </div>
-        </div>
-         <!--smarphone tienda oficial-->
-        <div class="tienda">
-            <div>
-                <a href="" class="link-tienda">Tienda oficial del smartphone aqui</a>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!--Celulares-->
 <section class="separador">
     <div>
-        <div class="title Smart-zone">Smart Zone</div>
+        <div class="title Smart-zone" id="Principal">Smart Zone</div>
 
-            <div class="conteiner-cards-smartphone">
-
-                <?php $resultado = mysqli_query($conexion, $celulares);
-
-                    while($row=mysqli_fetch_assoc($resultado)) {?>
-
-
-                    <div class="cards">
-                        <img src="<?php echo $row["link_img"]; ?>" alt="" class="img-smartphone">
-                        <div class="name-smartphone"><?php echo $row["nombre"]; ?></div>
-                        <div class="conteiner-puntuacion">
-                            <div>5</div>
-                            <span>⭐</span>
-                        </div>
-                    </div>
-
-                <?php } mysqli_free_result($resultado);?>
+            <div class="list-smarphone">
                     
+
             </div>
 
         </div>
@@ -367,92 +380,13 @@
 
 <section class="separador">
     <div>
-    <div class="title Smart-zone amarillo-claro">Nuevos Smartphone</div>
-        <div class="conteiner-cards-smartphone">
-            <div class="cards color-fondo">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards color-fondo">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards color-fondo">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards color-fondo">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards color-fondo">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards color-fondo">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-
-            <div class="cards color-fondo">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
-            
-            <div class="cards color-fondo">
-                <img src="./assets/image 20smartphone.png" alt="" class="img-smartphone">
-                <div class="name-smartphone">Samsung
-                Galaxy A52</div>
-                <div class="conteiner-puntuacion">
-                    <div>5</div>
-                    <span>⭐</span>
-                </div>
-            </div>
+    <div class="title Smart-zone amarillo-claro" id = "equipos_nuevos">Nuevos Smartphone</div>
+        <div class="nuevos-smarphones">
+                
             </div>
         </div>
     </div>
 </section>
-<!--detail-smartphone-->
 
 
 <!--Footer-->
@@ -465,11 +399,12 @@
         </div>
     </div>
 </footer>
-<script>
-    
+
+<script>   
     //celulares
 
     let celulares = <?php echo $celulares_json; ?>;
+    
     //categorias
     let categorias = <?php echo $categorias_json; ?>;
     let camaraCategoria = <?php echo $camaras_json; ?>;
@@ -480,10 +415,7 @@
     let gamaMediaCategoria = <?php echo $gamaalta_json; ?>;
     let gamaBajaCategoria = <?php echo $gamabaja_json; ?>;
     let multimediaCategoria = <?php echo $multimedia_json; ?>;
-    
-    
-    
-
+    let nuevos = <?php echo $nuevo_json; ?>;
 
 </script>
 <script src="http://localhost/phonereview/main/code.js" ></script>

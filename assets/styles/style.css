@@ -4,6 +4,11 @@
     margin: 0;
     font-family: var(--fuenteConten);
 }
+
+html{
+    scroll-behavior:smooth;
+}
+
 :root{
     --colorprincipal: #12CDD4;
     --zizetitulosgrandes: 30px;
@@ -79,12 +84,10 @@ header{
 /*----Detail-smatphone----*/
 
 .total-detail{
-    display: none;
     position:absolute;
-    z-index: 9;
+    top: 60px;
     right: 0;
-    padding-top: 60px;
-    height: 700px;
+    height: 600px;
     overflow: scroll;
 }
 
@@ -338,7 +341,7 @@ header{
 }
     /*-----------------------------------------------*/
 
-/*---conteiner smart zone---*/
+/*---conteiner smart zone ---*/
 .conteiner-cards-smartphone{
     display: grid;
     grid-template-columns: repeat(4, 260px);
@@ -500,7 +503,7 @@ header{
     background-color: #E3E084;
 }
 .amarillo-claro{
-    color: var(--amarilloclaro);
+    color: hsl(180, 2%, 35%);
 }
 .titulo-pequeño{
     font-size: 20px;
@@ -522,6 +525,10 @@ header{
     display: none;
 }
 
+.enlases{
+    text-decoration: none;
+    color: black;
+}
 @media (max-width:700px) {
     .cabecera {
        border: none;
