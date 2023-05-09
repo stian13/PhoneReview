@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: var(--fuenteConten);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+    --colorprincipal: #12CDD4;
+    --zizetitulosgrandes: 30px;
+    --zisetitulospequeños: 24px;
+    --zisetexto: 17px;
+    --fuente: 'Roboto Slab', serif;
+    --fuenteConten: sans-serif;
+    --grosorFuente1: 300;
+    --grosorFuente2: 400;
+    --grosorFuente3: 500;
+    --grissuave: #D9D9D9;
+    --grisnamesmartphone: #818181;
+    --azulclarosuabe: #5ECDE0;
+    --blanco: white;
+    --blancopuro: #ffffff;
+    --lilaclaro: #B4ABEB;
+    --amarilloclaro: #E3E084;
+    --verdeclaroblanco:  #5EE0B1;
+    --sombra: 0, 0, 0, 0.25;
+}
+.cabecera{
+    margin: 40px 0 40px 50px;
+    font-size: var(--zisetitulospequeños);
+    
+}
+span{
+    font-family: var(--fuente);
+    font-size: var(--zizetitulosgrandes);
+}
+.span1{
+    color: var(--colorprincipal);
+}
+
+.section1{
+    margin: 20px 0 40px 150px;
+}
+
+.section1 div {
+    font-size: var(--zisetitulospequeños);
+}
+
+.section2 {
+    display: flex; 
+    justify-content: center;
+}
+
+.section2 div{
+    width: 1000px;
+}
+
+.section2 div p{
+    font-size: 22px;
+    text-align: justify;
+    margin-top: 30px;
+}

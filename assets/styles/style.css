@@ -536,6 +536,10 @@ header{
     text-decoration: none;
     color: black;
 }
+.colorgris{
+    color: var(--grisnamesmartphone);
+
+}
 @media (max-width:700px) {
     .cabecera {
        border: none;

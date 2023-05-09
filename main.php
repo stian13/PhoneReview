@@ -405,7 +405,9 @@ include("./main/conexion.php");
 <footer>
     <div class="conteiner-footer">
         <div class="content-footer">
-            <div>Conoce mas sobre nosotros</div>
+            <div>
+                <a href="./PhoneReview.html" class="enlases colorgris">Conoce mas sobre nosotros</a>
+            </div>
             <div><span>Phone</span>Review</div>
             <div>2023</div>
         </div>
