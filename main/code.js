@@ -35,20 +35,15 @@ equiposNuevos.appendChild(nuevosSmarphones)
 //---------------------detail----------------------------------
 
 const arrayNameCaracteristicas = [
-    {nombreCa:'Bateria', ubicacionImg:'../assets/iconos/bateria.png'},
-    {nombreCa:'RAM', ubicacionImg:'../assets/iconos/ram.png'},
-    {nombreCa:'Camara Trasera', ubicacionImg:'../assets/iconos/camara_trasera.png'},
-    {nombreCa:'Camara Frontal', ubicacionImg:'../assets/iconos/camara_trasera.png'},
-    {nombreCa:'Sistema operativo', ubicacionImg:'../assets/iconos/androide.png'},
-    {nombreCa:'Puntos anTuTu', ubicacionImg:'../assets/iconos/'},
-    {nombreCa:'Procesador', ubicacionImg:'../assets/iconos/procesador.png'},
-    {nombreCa:'Memoria', ubicacionImg:'../assets/iconos/disco-duro.png'},
+    {nombreCa:'Bateria', ubicacionImg:'http://localhost/phonereview/assets/iconos/bateria.png'},
+    {nombreCa:'RAM', ubicacionImg:'http://localhost/phonereview/assets/iconos/ram.png'},
+    {nombreCa:'Camara Trasera', ubicacionImg:'http://localhost/phonereview/assets/iconos/camara_trasera.png'},
+    {nombreCa:'Camara Frontal', ubicacionImg:'http://localhost/phonereview/assets/iconos/camara_frontal.png'},
+    {nombreCa:'Sistema operativo', ubicacionImg:'http://localhost/phonereview/assets/iconos/sistema-operativo.png'},
+    {nombreCa:'Puntos anTuTu', ubicacionImg:'http://localhost/phonereview/assets/iconos/antutu.png'},
+    {nombreCa:'Procesador', ubicacionImg:'http://localhost/phonereview/assets/iconos/procesador.png'},
+    {nombreCa:'Memoria', ubicacionImg:'http://localhost/phonereview/assets/iconos/disco-duro.png'},
 ]
-
-
-
-//smart-zone y smartphone neews
-
 
         /*detail- Detalles del telefono 
 
@@ -77,14 +72,13 @@ const arrayNameCaracteristicas = [
                     <div class="conteiner-caracteristicas">
 
                         <div class="caracteristica">
-                            <div class="tipo-carateristica">
-                                <img src="./assets/iconos/bateria.png" alt="">
-                                <span>Bateria</span>
-                            </div>
-                            <div class="dato-caracteristica">5000 mAh</div>
+                            <img src="./assets/iconos/bateria.png" alt="" class ="imagen-caracteristica">
+                            <p class="dato-caracteristica">
+                                5000 mAh
+                            </p>
                         </div>
 
-                </div>
+                 </div>
 
                 <!--smarphone comentarios-->
                 <div class="titulo-pequeño">Comentarios</div>
@@ -163,7 +157,6 @@ botonSesion.addEventListener('click', function(event) {
     event.preventDefault();
     redirectorRegistroLogin(botonSesion);
   });
-
   experimento.addEventListener('click', function () {
     llamado()
 })
@@ -194,6 +187,7 @@ const titulosCategorias = [
 ];
 
 function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,energy,pAntuntu,img,tienda,nameCaracteristica,so) {
+    totalDetail.innerHTML='';
     const detailSmartphone = document.createElement('div');
     detailSmartphone.classList.add('detail-smartphone');
 
@@ -202,12 +196,16 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
     boxSmartphone.classList.add('box-smartphone')
 
     const imgExit = document.createElement("img");
-    imgExit.setAttribute('src', '../assets/iconos/cerrar-ventana.png');
-    imgExit.classList.add = ('exit');
+    imgExit.setAttribute('src', 'http://localhost/phonereview/assets/iconos/cerrar-ventana.png');
+    imgExit.classList.add("exit");
+    imgExit.addEventListener('click', function () {
+        totalDetail.classList.toggle('desactivador')
+    })
+
 
     const imgSmartphone = document.createElement("img");
     imgSmartphone.setAttribute('src',img);
-    imgSmartphone.classList.add = ('photo-smarphone');
+    imgSmartphone.classList.add('photo-smarphone');
 
     boxSmartphone.append(imgExit,imgSmartphone);
 
@@ -237,36 +235,43 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
 
     //smarphone caracteristicas
     const divTituloPequeno = document.createElement("div");
-    divTituloPequeno.classList.add("titulo-pequeño");
+    divTituloPequeno.classList.add("titulo-caracteristica");
     divTituloPequeno.textContent = "Caracteristicas";
 
     // conteiner-caracteristicas
     const divConteinerCaracteristicas = document.createElement("div");
     divConteinerCaracteristicas.classList.add("conteiner-caracteristicas");
-    for (let i = 0; i < nameCaracteristica.length; i++) {
+    let datosCaracteristicas = [
+        energy,
+        ram,
+        trasera,
+        frontal,
+        so,
+        pAntuntu,
+        cerebro,
+        espacio
+    ]
+    for (let i = 0; i < nameCaracteristica.length, i < datosCaracteristicas.length; i++) {
         const especificacionName = nameCaracteristica[i].nombreCa;
         const ubicacionImg = nameCaracteristica[i].ubicacionImg;
+        const datosEquipo = datosCaracteristicas[i]
 
         const divCaracteristica = document.createElement("div");
         divCaracteristica.classList.add("caracteristica");
+        divCaracteristica.setAttribute('title', especificacionName);
         
-
-        const divTipoCaracteristica = document.createElement("div");
-        divTipoCaracteristica.classList.add("tipo-caracteristica");
-    
         const imgCaracteristica = document.createElement("img");
+        imgCaracteristica.classList.add("imagen-caracteristica");
         imgCaracteristica.setAttribute('src', ubicacionImg);
-    
-        const spanNameCaracteristica = document.createElement("span");
-        spanNameCaracteristica.innerText = especificacionName;
+        imgCaracteristica.setAttribute('alt', especificacionName);
+        imgCaracteristica.setAttribute('title', especificacionName);
 
-        const divDatoCaracteristica = document.createElement("div");
-        divDatoCaracteristica.classList.add("dato-caracteristica");
-    
-        divTipoCaracteristica.append(imgCaracteristica,spanNameCaracteristica);
-        divCaracteristica.append(divTipoCaracteristica,divDatoCaracteristica);
+        const pDatoCaracteristica = document.createElement("p");
+        pDatoCaracteristica.classList.add("dato-caracteristica");
+        pDatoCaracteristica.innerText = datosEquipo; 
+
+        divCaracteristica.append(imgCaracteristica, pDatoCaracteristica);
         divConteinerCaracteristicas.appendChild(divCaracteristica);
-        
     }
 
     // enlace tienda
@@ -276,7 +281,8 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
     const divEnlace = document.createElement("div");
 
     const aTienda = document.createElement("a");
-    aTienda.setAttribute('src',tienda);
+    aTienda.setAttribute('href',tienda);
+    aTienda.setAttribute('target','_blank');
     aTienda.classList.add("link-tienda");
     aTienda.textContent = "Tienda oficial del smartphone aquí";
 
@@ -340,6 +346,7 @@ function renderPhones(array, encabezado, ubicacion) {
     
             divCards.addEventListener('click', function () {
                 renderizadoDetail(idTelefono,nombreCelular,nombreMarca,memoria,cpu,camaraFrontal,camaraTrasera,memoryRam,batery,antutuP,linkCelular,tienda,arrayNameCaracteristicas,oS);
+                totalDetail.classList.toggle('desactivador')
             })
     
             divCards.append(imgSmarphone, divName, divPuntuacion);
