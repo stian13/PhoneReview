@@ -180,7 +180,22 @@ header{
     flex-wrap: wrap;
 }
 .name-user{
+    background-color:rgb(0, 117, 117);
+    border: none;
+    text-align: center;
+    width: 100px;
+    border-radius: 5px;
+    color: var(--blanco);
     order: 1;
+}
+
+.User{
+    background-color:rgb(0, 117, 117);
+    height: 20px;
+    text-align: center;
+    margin-right: 5px;
+    border-radius: 5px;
+    color: var(--blanco);
 }
 .conteiner-input{
     order: 2;

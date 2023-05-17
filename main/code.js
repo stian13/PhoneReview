@@ -1,3 +1,6 @@
+//Conexion base de datos 
+
+
 
 //id categorias
 const categoriaCamaras = document.querySelector('#Camaras');
@@ -100,16 +103,18 @@ const arrayNameCaracteristicas = [
                 </form>
                 
                 <div class="todos-comentarios">
-            <div class="comentario-user-other">
-                <div class="name-use">gabriel</div>
-                    <div class="parrafo">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium numquam quae minima, sint consequatur quasi voluptatibus amet tenetur natus, sit a recusandae quisquam, dolore illo mollitia est. Dolore, vero ipsum.
+                
+                <div class="comentario-user-other">
+                    <div class="name-use">gabriel</div>
+                        <div class="parrafo">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium numquam quae minima, sint consequatur quasi voluptatibus amet tenetur natus, sit a recusandae quisquam, dolore illo mollitia est. Dolore, vero ipsum.
+                        </div>
+                        <div class="caja-puntos">
+                            <div>5</div>
+                            <span>⭐</span>
+                        </div>
                     </div>
-                    <div class="caja-puntos">
-                        <div>5</div>
-                        <samp>⭐</samp>
-                    </div>
-                </div>
+                    
                 <div class="comentario-user-other">
                     <div class="name-use">gabriel</div>
                         <div class="parrafo">

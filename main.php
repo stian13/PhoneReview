@@ -22,6 +22,9 @@ include("./main/conexion.php");
     $categorias_gama_baja = "SELECT * FROM `celulares` WHERE categoria_id = 7";
     $categorias_multimedia = "SELECT * FROM `celulares` WHERE categoria_id = 8";
     $categorias_nuevo = "SELECT * FROM `celulares` WHERE categoria_id = 9";
+    #consulta comentarios
+    $comentarios = "SELECT * FROM comentarios";
+
     #-------------------------------------------------------
 
 
@@ -48,8 +51,11 @@ include("./main/conexion.php");
     $resultado_consulta_categoria_multimedia = $conexion->query($categorias_multimedia);
 
     $resultado_consulta_categoria_nuevo = $conexion->query($categorias_nuevo);
+    
+    $resultado_consulta_comentarios = $conexion->query($comentarios);
 
 
+$user = $_SESSION['usuario'];
 #arrays almacen
     $celulares_array = array();
     $categorias_celulares = array();
@@ -64,6 +70,10 @@ include("./main/conexion.php");
     $categorias_celulares_gamabaja = array();
     $categorias_celulares_multimedia = array();
     $categorias_celulares_nuevo = array();
+
+    #comentarios
+
+    $comentarios_arrays = array();
 
     function ciclo_agregador($consulta_resultado, $array)
     {
@@ -91,6 +101,8 @@ include("./main/conexion.php");
     $categorias_celulares_multimedia =ciclo_agregador($resultado_consulta_categoria_multimedia, $categorias_celulares_multimedia);
 
     $categorias_celulares_nuevo =ciclo_agregador($resultado_consulta_categoria_nuevo, $categorias_celulares_nuevo);
+
+    $comentarios_arrays =ciclo_agregador($resultado_consulta_comentarios, $comentarios_arrays);
 
 
     
@@ -121,6 +133,7 @@ include("./main/conexion.php");
     $gamabaja_json = json_encode($categorias_celulares_gamabaja);
     $multimedia_json = json_encode($categorias_celulares_multimedia);
     $nuevo_json = json_encode($categorias_celulares_nuevo);
+    $comentarios_json = json_encode($comentarios_arrays);
 
 #-----------------------------
 
@@ -180,8 +193,59 @@ include("./main/conexion.php");
             </section>
                         <!--detail-->
 
-        <section class="total-detail">
-            
+        <section class="total-detail desactivador">
+
+        <div class="detail-smartphone">
+
+                <!--smarphone img-->
+                <div class="box-smartphone">
+                    
+                </div>
+
+               <!--smarphone name-->
+                <div class="name-smartphone-detail"></div>
+
+                <!--smarphone puntos 1-->
+                <div class="total-puntos-user">
+                    
+                </div>
+
+                <!--smarphone caracteristicas-->
+                <div class="titulo-pequeño " >Caracteristicas</div>
+
+                    <div class="conteiner-caracteristicas">
+
+                        
+
+                    </div>
+
+                <!--smarphone comentarios-->
+                <div class="titulo-pequeño">Comentarios</div>
+                
+                <form class="comentario-user" id="caja-comentarios">
+                    <input class="name-user" name = "user" value="<?= $_SESSION['usuario'] ?>" readonly></input>
+                    <div class="conteiner-input">
+                        <input type="text" placeholder="    Comenta" class="input-comentario" name = "texto">
+                    </div>
+                    <label for="" class="label-puntos">Da una puntuacion</label>
+                    <select name="numero" id="numero" class="dar-puntuacion">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <input type="" class="idmovil desactivador" value="" name="movilid">
+                    <input type="submit" value="Enviar" class="boton-enviar">
+                </form>
+                
+            <div class="todos-comentarios">
+
+                </div>
+                <!--smarphone tienda oficial-->
+                <div class="tienda">
+                </div>
+            </div>
         </section>
 
         </div>
@@ -233,7 +297,7 @@ include("./main/conexion.php");
                 </div>
 
                 <div class="conteiner-cards-smartphone">
-                            
+
                 </div>
         </div>
     </section>
@@ -297,6 +361,17 @@ include("./main/conexion.php");
     let gamaBajaCategoria = <?php echo $gamabaja_json; ?>;
     let multimediaCategoria = <?php echo $multimedia_json; ?>;
     let nuevos = <?php echo $nuevo_json; ?>;
+
+    //nombre de ususario iniciado
+
+    let usuario = "<?= $user ?>";
+    
+    //comentarios
+    let idCelphone = 5;
+    let comentariosTotales = <?php echo $comentarios_json; ?>;
+    let comentariosFiltrados = comentariosTotales.filter(function (x) {
+        return x.id_celular == idCelphone
+    });
 
 </script>
 <script src="http://localhost/phonereview/main//maincode.js" ></script>

@@ -23,13 +23,27 @@ const equiposNuevos = document.querySelector('#equipos_nuevos');
 //detail
 const totalDetail = document.querySelector('.total-detail');
 
+//elementos internos del detail 
 
+const detailSmartphone = document.querySelector('.detail-smartphone');
+const boxSmartphone = document.querySelector(".box-smartphone");
+const divTotalPuntosUser = document.querySelector(".total-puntos-user");
+const divConteinerCaracteristicas = document.querySelector(".conteiner-caracteristicas");
+const conteinerComentarios = document.querySelector('.todos-comentarios');
+const divTienda = document.querySelector(".tienda");
+const nameSmartphoneDetail = document.querySelector('.name-smartphone-detail');
+
+    //detail-comentarios
+const  cajaComentarios = document.querySelector('#caja-comentarios')
+//conteiner smartphones
 const conteinerCardsSmartphone = document.querySelector('.conteiner-cards-smartphone');
+
+const inputComentario = document.querySelector('.input-comentario')
 
 const cards = document.querySelector('.cards');
 const listSmarphone = document.querySelector('.list-smarphone');
 const nuevosSmarphones = document.querySelector('.nuevos-smarphones')
-
+ 
 principal.appendChild(listSmarphone)
 equiposNuevos.appendChild(nuevosSmarphones)
 
@@ -71,62 +85,63 @@ const titulosCategorias = [
     "Smarphone para uso de Multimedia"
 ];
 
+const idmovil = document.querySelector('.idmovil')
 //Detail funcion reder----------
-function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,energy,pAntuntu,img,tienda,nameCaracteristica,so) {
-    totalDetail.innerHTML='';
-    const detailSmartphone = document.createElement('div');
-    detailSmartphone.classList.add('detail-smartphone');
-
-    //smarphone img
-    const boxSmartphone = document.createElement("div");
-    boxSmartphone.classList.add('box-smartphone')
-
+function renderizadoDetail(idCell, nombre,marca,espacio,cerebro,frontal,trasera,ram,energy,pAntuntu,img,tienda,nameCaracteristica,so, iniciado) {
+    idmovil.innerHTML=' ';
+    idmovil.value = idCell;
+    //totalDetail.innerHTML='';
+    /*
+    
+    
+    divConteinerCaracteristicas.innerHTML=' ';
+    conteinerComentarios.innerHTML=' ';
+    divTienda.innerHTML=' ';
+    
+    */
+    //img smarphone
+        //cierre
+    boxSmartphone.innerHTML=' ';
     const imgExit = document.createElement("img");
     imgExit.setAttribute('src', 'http://localhost/phonereview/assets/iconos/cerrar-ventana.png');
     imgExit.classList.add("exit");
     imgExit.addEventListener('click', function () {
         totalDetail.classList.toggle('desactivador')
     })
-
-
+        //img celular
     const imgSmartphone = document.createElement("img");
     imgSmartphone.setAttribute('src',img);
     imgSmartphone.classList.add('photo-smarphone');
-
+    
     boxSmartphone.append(imgExit,imgSmartphone);
 
     //smarphone name
-    const nameSmartphoneDetail = document.createElement('div');
-    nameSmartphoneDetail.classList.add('name-smartphone-detail');
-    nameSmartphoneDetail.innerText=nombre;
-    //smarphone puntos 1
+    nameSmartphoneDetail.innerHTML=' ';
+    nameSmartphoneDetail.textContent = nombre;
 
     // Crear el elemento <div> con la clase "total-puntos-user"
-    const divTotalPuntosUser = document.createElement("div");
-    divTotalPuntosUser.classList.add("total-puntos-user");
+    
 
     const divTexto = document.createElement("div");
+    divTexto.textContent = "Puntuacion de usuarios";
 
     const divPuntos = document.createElement("div");
     divPuntos.classList.add("puntos");
-    divPuntos.innerText=5;
+    
     const divPuntuacion = document.createElement("div");
-    divTexto.textContent = "Puntuacion de usuarios";
+    divPuntuacion.innerText=5;
 
     const spanEstrella = document.createElement("span");
     spanEstrella.textContent = "⭐";
 
+    divTotalPuntosUser.innerHTML=' ';
     divPuntos.append(divPuntuacion,spanEstrella);
     divTotalPuntosUser.append(divTexto,divPuntos);
 
     //smarphone caracteristicas
-    const divTituloPequeno = document.createElement("div");
-    divTituloPequeno.classList.add("titulo-caracteristica");
-    divTituloPequeno.textContent = "Caracteristicas";
 
     // conteiner-caracteristicas
-    const divConteinerCaracteristicas = document.createElement("div");
-    divConteinerCaracteristicas.classList.add("conteiner-caracteristicas");
+
     let datosCaracteristicas = [
         energy,
         ram,
@@ -137,11 +152,11 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
         cerebro,
         espacio
     ]
+    divConteinerCaracteristicas.innerHTML=' ';
     for (let i = 0; i < nameCaracteristica.length, i < datosCaracteristicas.length; i++) {
         const especificacionName = nameCaracteristica[i].nombreCa;
         const ubicacionImg = nameCaracteristica[i].ubicacionImg;
         const datosEquipo = datosCaracteristicas[i]
-
         const divCaracteristica = document.createElement("div");
         divCaracteristica.classList.add("caracteristica");
         divCaracteristica.setAttribute('title', especificacionName);
@@ -155,15 +170,42 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
         const pDatoCaracteristica = document.createElement("p");
         pDatoCaracteristica.classList.add("dato-caracteristica");
         pDatoCaracteristica.innerText = datosEquipo; 
-
+        
+        
         divCaracteristica.append(imgCaracteristica, pDatoCaracteristica);
+        
         divConteinerCaracteristicas.appendChild(divCaracteristica);
     }
+    
+    
 
+    //comentarios de otros usuarios 
+    conteinerComentarios.innerHTML= ' ';
+    const comentarioUserOther = document.createElement('div')
+    comentarioUserOther.classList.add('comentario-user-other');
+    const userName = document.createElement('div');
+    userName.classList.add('name-use');
+    //userName.innerText = "gabriel";
+
+    const parrafoComentario = document.createElement('div')
+    parrafoComentario.classList.add('parrafo');
+    //parrafoComentario.innerText = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium numquam quae minima, sint consequatur quasi voluptatibus amet tenetur natus, sit a recusandae quisquam, dolore illo mollitia est. Dolore, vero ipsum.';
+
+    const cajaPuntos = document.createElement('div')
+    cajaPuntos.classList.add('caja-puntos')
+
+    const punto = document.createElement('div')
+    //punto.innerText = 4;
+    const spanStart = document.createElement('span')
+    //spanStart.innerText = '⭐';
+
+    cajaPuntos.append(punto,spanStart);
+
+    comentarioUserOther.append(userName,parrafoComentario,cajaPuntos)
+    conteinerComentarios.appendChild(comentarioUserOther)
     // enlace tienda
-    const divTienda = document.createElement("div");
-    divTienda.classList.add("tienda");
-
+    
+    divTienda.innerHTML= ' ';
     const divEnlace = document.createElement("div");
 
     const aTienda = document.createElement("a");
@@ -173,10 +215,23 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
     aTienda.textContent = "Tienda oficial del smartphone aquí";
 
     divEnlace.appendChild(aTienda);
-    divTienda.appendChild(divEnlace);
 
-    detailSmartphone.append(boxSmartphone,nameSmartphoneDetail,divTotalPuntosUser,divTituloPequeno,divConteinerCaracteristicas,divTienda)
-    totalDetail.appendChild(detailSmartphone);
+    divTienda.appendChild(divEnlace);
+    cajaComentarios.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var datos = new FormData(cajaComentarios);
+        
+        fetch('./main/save.php',{
+            method:'POST',
+            body: datos
+        })
+            .then(res => res.json())
+            .then(data => {
+                conteinerComentarios.innerHTML=`${data}`;
+            inputComentario.value=" ";
+            })
+    })
 }
 
 function renderPhones(array, encabezado, ubicacion) {
@@ -230,8 +285,10 @@ function renderPhones(array, encabezado, ubicacion) {
         divPuntuacion.append(divPunto, spanEstrellita)
 
         divCards.addEventListener('click', function () {
-            renderizadoDetail(idTelefono,nombreCelular,nombreMarca,memoria,cpu,camaraFrontal,camaraTrasera,memoryRam,batery,antutuP,linkCelular,tienda,arrayNameCaracteristicas,oS);
             totalDetail.classList.toggle('desactivador')
+            console.log(idTelefono,nombreCelular,nombreMarca,memoria,cpu,camaraFrontal,camaraTrasera,memoryRam,batery,antutuP,linkCelular,tienda,oS,usuario);
+            renderizadoDetail(idTelefono,nombreCelular,nombreMarca,memoria,cpu,camaraFrontal,camaraTrasera,memoryRam,batery,antutuP,linkCelular,tienda,arrayNameCaracteristicas,oS,usuario);
+            inputComentario.value=" ";
         })
 
         divCards.append(imgSmarphone, divName, divPuntuacion);
@@ -293,7 +350,6 @@ categoriaMultimedia.addEventListener('click', function () {
 
 tipoRenderizasdo(celulares, "", listSmarphone, false);
 tipoRenderizasdo(nuevos, "", nuevosSmarphones, false);
-
 
 
 
