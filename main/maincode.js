@@ -91,14 +91,6 @@ function renderizadoDetail(idCell, nombre,marca,espacio,cerebro,frontal,trasera,
     idmovil.innerHTML=' ';
     idmovil.value = idCell;
     //totalDetail.innerHTML='';
-    /*
-    
-    
-    divConteinerCaracteristicas.innerHTML=' ';
-    conteinerComentarios.innerHTML=' ';
-    divTienda.innerHTML=' ';
-    
-    */
     //img smarphone
         //cierre
     boxSmartphone.innerHTML=' ';
@@ -203,6 +195,7 @@ function renderizadoDetail(idCell, nombre,marca,espacio,cerebro,frontal,trasera,
 
     comentarioUserOther.append(userName,parrafoComentario,cajaPuntos)
     conteinerComentarios.appendChild(comentarioUserOther)
+    
     // enlace tienda
     
     divTienda.innerHTML= ' ';
