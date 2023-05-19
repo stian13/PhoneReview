@@ -59,27 +59,28 @@ html{
     color: var(--grisnamesmartphone);
 }
 .list-smarphone .cards .conteiner-puntuacion{
-    position: absolute;
-    left: 210px;
-    top: 305px;
-    width: 40px;
+    display: flex;
+    justify-content: flex-end;
+    width: 260px;
+    height: 40px;
+    border-radius: 0 0 20px 20px;
+    align-items: center;
 }
-.cards{
-    background-color: var(--blancopuro);
+.list-smarphone .cards .conteiner-puntuacion .antuntuImg{
+    width: 35px;
+    height: 35px;
 }
 
-.list-smarphone .cards .conteiner-puntuacion div:nth-child(1){
-    display: inline;
-}
-.list-smarphone .cards .conteiner-puntuacion div{
+.list-smarphone .cards .conteiner-puntuacion .rango{
     font-size: 18px;
-    color: #000000;
+    padding-bottom: 4px;
 }
-.list-smarphone .cards .conteiner-puntuacion span{
-    font-size: 18px;
-    color: #000000;
 
+.list-smarphone .cards .conteiner-puntuacion .fraseAntutu{
+    font-size: 15px;
+    margin-right: 70px
 }
+
 .list-smarphone .cards:hover{
     box-shadow: 4px 4px 4px rgba(0, 0.25, 0, 0.25);
     border-radius: 20px;

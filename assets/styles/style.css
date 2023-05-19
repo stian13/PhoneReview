@@ -231,6 +231,11 @@ header{
     cursor: pointer;
 }
             /*otros-comentarios*/
+
+.resiente{
+
+}
+
 .todos-comentarios{
     
 }
@@ -240,7 +245,16 @@ header{
     justify-content: center;
     margin-top: 25px;
 }
+
+.name-use{
+    font-weight: 550;
+    color: #494949;
+}
 .comentario-user-other .parrafo{
+    width: 400px;
+    background-color:#cccccc;
+    border-radius: 5px;
+    padding: 4px;
     text-align: justify;
 }
 .caja-puntos{
@@ -374,6 +388,8 @@ header{
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+
 .conteiner-cards-smartphone .cards{
     width: 260px;
     height: 360px;
@@ -387,22 +403,40 @@ header{
     border-radius: 20px 20px 0px 0px;
 }
 .conteiner-cards-smartphone .cards .name-smartphone{
-    font-size: var(--zisetitulospequeños);
+    font-size: 21px;
     text-align: center;
     color: var(--grisnamesmartphone);
 }
 .conteiner-cards-smartphone .cards .conteiner-puntuacion{
+    display: flex;
+    justify-content: flex-end;
+    width: 260px;
+    height: 40px;
+    border-radius: 0 0 20px 20px;
+    align-items: center;
     position: absolute;
-    left: 210px;
-    top: 330px;
+    bottom: 0;
+    color:var(--grisnamesmartphone);
+}
+
+.conteiner-cards-smartphone .cards .conteiner-puntuacion .fraseAntutu{
+    font-size: 15px;
+    margin-right: 70px;
     
 }
+
 .cards{
     background-color: var(--blancopuro);
 }
 
-.conteiner-cards-smartphone .cards .conteiner-puntuacion div:nth-child(1){
-    display: inline;
+.conteiner-cards-smartphone .cards .conteiner-puntuacion .rango{
+    font-size: 18px;
+    padding-bottom: 4px;
+}
+
+.conteiner-cards-smartphone .cards .conteiner-puntuacion .antuntuImg{
+    width: 35px;
+    height: 35px;
 }
 .conteiner-cards-smartphone .cards:hover{
     box-shadow: 4px 4px 4px rgba(0, 0.25, 0, 0.25);

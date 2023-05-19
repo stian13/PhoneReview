@@ -220,7 +220,7 @@ $user = $_SESSION['usuario'];
                     </div>
 
                 <!--smarphone comentarios-->
-                <div class="titulo-pequeño">Comentarios</div>
+                <div class="titulo-pequeño" method="post">Comentarios</div>
                 
                 <form class="comentario-user" id="caja-comentarios">
                     <input class="name-user" name = "user" value="<?= $_SESSION['usuario'] ?>" readonly></input>
@@ -238,7 +238,9 @@ $user = $_SESSION['usuario'];
                     <input type="" class="idmovil desactivador" value="" name="movilid">
                     <input type="submit" value="Enviar" class="boton-enviar">
                 </form>
-                
+            <div class="resiente">
+
+            </div>
             <div class="todos-comentarios">
 
                 </div>
@@ -367,11 +369,9 @@ $user = $_SESSION['usuario'];
     let usuario = "<?= $user ?>";
     
     //comentarios
-    let idCelphone = 5;
+    
     let comentariosTotales = <?php echo $comentarios_json; ?>;
-    let comentariosFiltrados = comentariosTotales.filter(function (x) {
-        return x.id_celular == idCelphone
-    });
+    
 
 </script>
 <script src="http://localhost/phonereview/main//maincode.js" ></script>

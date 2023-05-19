@@ -191,10 +191,30 @@ const titulosCategorias = [
     "Smarphone para uso de Multimedia"
 ];
 
+function conversoDeNumeros(a,lugarDeImpresion) {
+    let numeros = a.map(Number);
+    numeros = numeros.filter(numero => !isNaN(numero));
+    let suma = numeros.reduce((a, b) => a + b, 0);
+    let cantidadNumeros = numeros.length;
+    let resultado = (suma / cantidadNumeros).toFixed(1);
+    lugarDeImpresion.innerText = resultado;
+}
+
 function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,energy,pAntuntu,img,tienda,nameCaracteristica,so) {
     totalDetail.innerHTML='';
     const detailSmartphone = document.createElement('div');
     detailSmartphone.classList.add('detail-smartphone');
+    
+    //comenatarios
+
+    let idCelphone;
+    idCelphone = ' ';
+    idCelphone = id;
+    let comentariosFiltrados = comentariosTotales.filter(function (x) {
+        return x.id_celular == idCelphone
+    });
+
+    let conteinerPuntos = [];
 
     //smarphone img
     const boxSmartphone = document.createElement("div");
@@ -228,9 +248,9 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
 
     const divPuntos = document.createElement("div");
     divPuntos.classList.add("puntos");
-    divPuntos.innerText=5;
+    
     const divPuntuacion = document.createElement("div");
-    divTexto.textContent = "Puntuacion de usuarios";
+    divTexto.textContent = "Puntuacion promedio de usuarios";
 
     const spanEstrella = document.createElement("span");
     spanEstrella.textContent = "⭐";
@@ -256,6 +276,7 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
         cerebro,
         espacio
     ]
+
     for (let i = 0; i < nameCaracteristica.length, i < datosCaracteristicas.length; i++) {
         const especificacionName = nameCaracteristica[i].nombreCa;
         const ubicacionImg = nameCaracteristica[i].ubicacionImg;
@@ -279,6 +300,47 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
         divConteinerCaracteristicas.appendChild(divCaracteristica);
     }
 
+    //comentarios user
+    const conteinerComentarios = document.createElement('div');
+    conteinerComentarios.classList.add('todos-comentarios')
+    
+    conteinerPuntos = [' '];
+    conteinerComentarios.innerHTML= ' ';
+    for (let i = 0; i < comentariosFiltrados.length; i++) {
+        const user = comentariosFiltrados[i].name_user_id;
+        const texto = comentariosFiltrados[i].contenido;
+        const puntajeDado =  comentariosFiltrados[i].puntaje;
+        conteinerPuntos.push(comentariosFiltrados[i].puntaje);
+            //comentarios de otros usuarios 
+        
+        const comentarioUserOther = document.createElement('div')
+        comentarioUserOther.classList.add('comentario-user-other');
+        const userName = document.createElement('div');
+        userName.classList.add('name-use');
+        userName.innerText = user;
+
+        const parrafoComentario = document.createElement('div')
+        parrafoComentario.classList.add('parrafo');
+        parrafoComentario.innerText = texto;
+
+        const cajaPuntos = document.createElement('div')
+        cajaPuntos.classList.add('caja-puntos')
+
+        const punto = document.createElement('div')
+        punto.innerText = puntajeDado;
+        const spanStart = document.createElement('span')
+        spanStart.innerText = '⭐';
+
+        cajaPuntos.append(punto,spanStart);
+
+        comentarioUserOther.append(userName,parrafoComentario,cajaPuntos)
+        conteinerComentarios.appendChild(comentarioUserOther)
+        idCelphone = ' ';
+    }
+
+    divPuntuacion.innerText=' ';
+    conversoDeNumeros(conteinerPuntos, divPuntuacion)
+
     // enlace tienda
     const divTienda = document.createElement("div");
     divTienda.classList.add("tienda");
@@ -294,7 +356,7 @@ function renderizadoDetail(id, nombre,marca,espacio,cerebro,frontal,trasera,ram,
     divEnlace.appendChild(aTienda);
     divTienda.appendChild(divEnlace);
 
-    detailSmartphone.append(boxSmartphone,nameSmartphoneDetail,divTotalPuntosUser,divTituloPequeno,divConteinerCaracteristicas,divTienda)
+    detailSmartphone.append(boxSmartphone,nameSmartphoneDetail,divTotalPuntosUser,divTituloPequeno,divConteinerCaracteristicas,conteinerComentarios,divTienda)
     totalDetail.appendChild(detailSmartphone);
 }
 
@@ -315,6 +377,23 @@ function renderPhones(array, encabezado, ubicacion) {
             const antutuP = array[i].puntaje_antuntu;
             const tienda = array[i].link_tienda;
             const oS = array[i].sistema_operativo;
+
+            
+
+            // Extraer todos los números de la cadena
+            let extractorPuntosAntutu = parseFloat(antutuP.replace(/v9 |[.]/g, ''))
+            let ki;
+            if (extractorPuntosAntutu <= 450000) {
+                 ki = "Bajo"
+            } else if (extractorPuntosAntutu > 45000 &&              extractorPuntosAntutu < 800000){
+                ki = "Medio"
+            }else if (extractorPuntosAntutu > 800000) {
+                ki = "Alto"
+            }else if (extractorPuntosAntutu == null){
+                ki = " "
+            }
+            console.log(antutuP, extractorPuntosAntutu, ki);
+
             /*
             dibujo = `
                 <div class="cards" id = "${idTelefono}">
@@ -343,11 +422,18 @@ function renderPhones(array, encabezado, ubicacion) {
             divPuntuacion.classList.add('conteiner-puntuacion');
     
     
-            const divPunto = document.createElement('div');
-            divPunto.innerText  = "5";
-            const spanEstrellita = document.createElement('span');
-            spanEstrellita.innerText = "⭐";
-            divPuntuacion.append(divPunto, spanEstrellita)
+            const divPunto = document.createElement('p');
+            divPunto.innerText  = ki;
+            divPunto.classList.add('rango')
+
+            const nivelAntutu = document.createElement('p')
+            nivelAntutu.classList.add('fraseAntutu')
+            nivelAntutu.textContent = "Nivel Atuntu"
+
+            const imgAntuntuP = document.createElement('img');
+            imgAntuntuP.setAttribute('src', 'http://localhost/phonereview/assets/iconos/antutu.png')
+            imgAntuntuP.classList.add('antuntuImg')
+            divPuntuacion.append(nivelAntutu, divPunto, imgAntuntuP)
     
             divCards.addEventListener('click', function () {
                 renderizadoDetail(idTelefono,nombreCelular,nombreMarca,memoria,cpu,camaraFrontal,camaraTrasera,memoryRam,batery,antutuP,linkCelular,tienda,arrayNameCaracteristicas,oS);

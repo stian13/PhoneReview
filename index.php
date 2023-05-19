@@ -13,6 +13,8 @@
     $categorias_gama_baja = "SELECT * FROM `celulares` WHERE categoria_id = 7";
     $categorias_multimedia = "SELECT * FROM `celulares` WHERE categoria_id = 8";
     $categorias_nuevo = "SELECT * FROM `celulares` WHERE categoria_id = 9";
+        #consulta comentarios
+        $comentarios = "SELECT * FROM comentarios";
     #-------------------------------------------------------
 
 
@@ -40,6 +42,7 @@
 
     $resultado_consulta_categoria_nuevo = $conexion->query($categorias_nuevo);
 
+    $resultado_consulta_comentarios = $conexion->query($comentarios);
 
 #arrays almacen
     $celulares_array = array();
@@ -55,6 +58,10 @@
     $categorias_celulares_gamabaja = array();
     $categorias_celulares_multimedia = array();
     $categorias_celulares_nuevo = array();
+
+        #comentarios
+
+        $comentarios_arrays = array();
 
     function ciclo_agregador($consulta_resultado, $array)
     {
@@ -83,6 +90,7 @@
 
     $categorias_celulares_nuevo =ciclo_agregador($resultado_consulta_categoria_nuevo, $categorias_celulares_nuevo);
 
+    $comentarios_arrays =ciclo_agregador($resultado_consulta_comentarios, $comentarios_arrays);
 
     
     
@@ -112,7 +120,7 @@
     $gamabaja_json = json_encode($categorias_celulares_gamabaja);
     $multimedia_json = json_encode($categorias_celulares_multimedia);
     $nuevo_json = json_encode($categorias_celulares_nuevo);
-
+    $comentarios_json = json_encode($comentarios_arrays);
 
 ?>
 <!DOCTYPE html>
@@ -288,6 +296,10 @@
     let multimediaCategoria = <?php echo $multimedia_json; ?>;
     let nuevos = <?php echo $nuevo_json; ?>;
 
+    //comentarios
+        
+    let comentariosTotales = <?php echo $comentarios_json; ?>;
+    console.log(comentariosTotales);
 </script>
 <script src="http://localhost/phonereview/main/code.js" ></script>
 
