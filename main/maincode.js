@@ -109,7 +109,8 @@ function conversoDeNumeros(a,lugarDeImpresion) {
 
 //funcion enviar caja de comentarios
 
-function enviarComentari(idForm) {
+function enviarComentari(idForm,z) {
+    z.preventDefault()
     var datos = new FormData(idForm);
         
         fetch('./main/save.php',{
@@ -117,6 +118,10 @@ function enviarComentari(idForm) {
             body: datos
         })
             .then(res => res.json())
+            .then(data => {
+                comentarioResiente.innerHTML=`${data}`;
+                inputComentario.value=" ";
+            })
 }
 
 //Detail funcion reder----------
@@ -153,7 +158,10 @@ function renderizadoDetail(idCell, nombre,marca,espacio,cerebro,frontal,trasera,
 
         inputComentario.value = ' ';
         idmovil.value = ' ';
-        darPuntuacion.value = ' ';
+        darPuntuacion.value = ' '; 
+
+        comentarioResiente.innerHTML=' ';
+        
     })
         //img celular
     const imgSmartphone = document.createElement("img");
@@ -276,8 +284,8 @@ function renderizadoDetail(idCell, nombre,marca,espacio,cerebro,frontal,trasera,
     divEnlace.appendChild(aTienda);
 
     divTienda.appendChild(divEnlace);
-    cajaComentarios.addEventListener('submit', function () {
-        enviarComentari(cajaComentarios);
+    cajaComentarios.addEventListener('submit', function (e) {
+        enviarComentari(cajaComentarios,e);
         inputComentario.value = ' ';
         idmovil.value = ' ';
         darPuntuacion.value = ' ';
@@ -358,6 +366,8 @@ function renderPhones(array, encabezado, ubicacion) {
         divCards.addEventListener('click', function () {
             totalDetail.classList.toggle('desactivador')
             renderizadoDetail(idTelefono,nombreCelular,nombreMarca,memoria,cpu,camaraFrontal,camaraTrasera,memoryRam,batery,antutuP,linkCelular,tienda,arrayNameCaracteristicas,oS,usuario);
+            comentarioResiente.innerHTML=' ';
+
             
         })
 
