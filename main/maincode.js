@@ -35,6 +35,9 @@ const nameSmartphoneDetail = document.querySelector('.name-smartphone-detail');
 
     //detail-comentarios
 const  cajaComentarios = document.querySelector('#caja-comentarios')
+const nameUser = document.querySelector('.name-user')
+const darPuntuacion = document.querySelector('.dar-puntuacion')
+
 //conteiner smartphones
 const conteinerCardsSmartphone = document.querySelector('.conteiner-cards-smartphone');
 
@@ -88,6 +91,10 @@ const titulosCategorias = [
 ];
 
 const idmovil = document.querySelector('.idmovil')
+inputComentario.value = ' ';
+idmovil.value = ' ';
+darPuntuacion.value = ' ';
+
 
 //transformador de array a numero 
 
@@ -98,6 +105,18 @@ function conversoDeNumeros(a,lugarDeImpresion) {
     let cantidadNumeros = numeros.length;
     let resultado = (suma / cantidadNumeros).toFixed(1);
     lugarDeImpresion.innerText = resultado;
+}
+
+//funcion enviar caja de comentarios
+
+function enviarComentari(idForm) {
+    var datos = new FormData(idForm);
+        
+        fetch('./main/save.php',{
+            method:'POST',
+            body: datos
+        })
+            .then(res => res.json())
 }
 
 //Detail funcion reder----------
@@ -130,7 +149,11 @@ function renderizadoDetail(idCell, nombre,marca,espacio,cerebro,frontal,trasera,
         divConteinerCaracteristicas.innerHTML=' ';
         conteinerComentarios.innerHTML= ' ';
         idCelphone = ' ';
-        divPuntuacion.innerText=' ';    
+        divPuntuacion.innerText=' ';
+
+        inputComentario.value = ' ';
+        idmovil.value = ' ';
+        darPuntuacion.value = ' ';
     })
         //img celular
     const imgSmartphone = document.createElement("img");
@@ -253,22 +276,13 @@ function renderizadoDetail(idCell, nombre,marca,espacio,cerebro,frontal,trasera,
     divEnlace.appendChild(aTienda);
 
     divTienda.appendChild(divEnlace);
-    cajaComentarios.addEventListener('submit', function (e) {
-
-        var datos = new FormData(cajaComentarios);
-        
-        fetch('./main/save.php',{
-            method:'POST',
-            body: datos
-        })
-            .then(res => res.json())
-            .then(data => {
-                comentarioResiente.innerHTML=`${data}`;
-                inputComentario.value=" ";
-            })
+    cajaComentarios.addEventListener('submit', function () {
+        enviarComentari(cajaComentarios);
+        inputComentario.value = ' ';
+        idmovil.value = ' ';
+        darPuntuacion.value = ' ';
     })
 }
-
 
 
 function renderPhones(array, encabezado, ubicacion) {
@@ -343,9 +357,8 @@ function renderPhones(array, encabezado, ubicacion) {
 
         divCards.addEventListener('click', function () {
             totalDetail.classList.toggle('desactivador')
-            console.log(idTelefono,nombreCelular,nombreMarca,memoria,cpu,camaraFrontal,camaraTrasera,memoryRam,batery,antutuP,linkCelular,tienda,oS,usuario);
             renderizadoDetail(idTelefono,nombreCelular,nombreMarca,memoria,cpu,camaraFrontal,camaraTrasera,memoryRam,batery,antutuP,linkCelular,tienda,arrayNameCaracteristicas,oS,usuario);
-            inputComentario.value=" ";
+            
         })
 
         divCards.append(imgSmarphone, divName, divPuntuacion);
